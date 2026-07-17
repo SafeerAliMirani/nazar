@@ -574,14 +574,16 @@ function drawStrip() {
   const desc = (x) => x.category + ' / ' + (x.config ? x.config.backbone : 'backbone not in metrics')
     + (typeof x.coreset_pct === 'number' ? ' / coreset ' + pctLabel(x.coreset_pct) : '');
   const el = $('mapsScope');
-  if (run.id === S.manifest.primary_run) {
+  // against S.primary.id, not the manifest. the category switcher moves the
+  // panels off the shipped primary and this line has to follow them.
+  if (run.id === S.primary.id) {
     el.textContent = 'These are ' + desc(m) + ', the same run as the panels above ('
       + run.files.metrics + ').';
   } else {
     // the scores printed under these images are on the strip's own scale, not the one the
     // threshold above uses, and nothing in the picture would say so
     el.textContent = 'These images were rendered by ' + run.id + ', which is ' + desc(m) + ' ('
-      + run.files.metrics + '). The panels above run ' + S.manifest.primary_run + ', which is '
+      + run.files.metrics + '). The panels above run ' + S.primary.id + ', which is '
       + desc(pm) + '. The scores under these images come from ' + run.files.scores
       + ' and are not on the same scale as the threshold above.';
   }
@@ -1059,6 +1061,22 @@ function renderAll() {
   drawReadouts();
   drawBreaks();
   drawStrip();
+}
+
+// The category buttons sit in the live panel and used to move only the bank, so
+// picking leather left the heatmaps, the threshold and the failure tables on
+// screw with nothing saying so. live.js calls this on a switch. Every category
+// ships its own metrics, scores and heatmap index, so the whole page can follow.
+function useCategory(category) {
+  const run = S.runs.find((r) => r.id === 'ship_' + category);
+  if (!run || !run.rows) return false;
+  S.primary = run;
+  if (run.heatmaps && run.heatmaps.length) S.maps = run;
+  recomputeDomain();
+  S.threshold = costMinimum(S.primary.rows, costInputs()).thr;
+  renderAll();
+  drawSources();
+  return true;
 }
 
 function setThreshold(v) {

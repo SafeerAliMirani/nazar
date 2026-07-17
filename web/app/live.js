@@ -725,6 +725,9 @@ async function selectSet(i) {
   if (L.switching || L.busy || i === L.sel) return;
   L.sel = i;
   markSet();
+  // the rest of the page reads this category too. it does not wait for the bank,
+  // since none of those panels need it. useCategory is app.js.
+  if (typeof useCategory === 'function') useCategory(L.sets[i].category);
   await categoryNote(L.sets[i]);
   if (L.armed) {
     await loadSet(i);
