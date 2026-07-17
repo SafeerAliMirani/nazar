@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nazar kernel parity harness</title>
+<style>
+  body { background:#0b0f14; color:#dfe7ef; font:13px/1.5 ui-monospace,Menlo,Consolas,monospace; margin:24px; }
+  h1 { font-size:15px; letter-spacing:.5px; }
+  table { border-collapse:collapse; margin:14px 0; font-size:12px; }
+  th,td { border:1px solid #1e2a37; padding:4px 9px; text-align:right; }
+  th { color:#8b98a5; font-weight:500; }
+  td.name { text-align:left; color:#dfe7ef; }
+  .pass { color:#37d67a; }
+  .fail { color:#ff6b6b; font-weight:600; }
+  .muted { color:#8b98a5; }
+  #verdict { font-size:14px; margin:12px 0; padding:9px 12px; border-radius:6px; display:inline-block; }
+  pre { color:#8b98a5; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<h1>NAZAR KERNEL PARITY HARNESS</h1>
+<p class="muted">No UI here on purpose. This page exists to prove the WGSL kNN matches the float64
+python reference before any pretty pixels get built on top of it.</p>
+<div id="verdict"></div>
+<div id="out"></div>
+<pre id="log"></pre>
+
+<script type="module">
+const log = (s) => { document.getElementById("log").textContent += s + "\n"; };
+const TAG = new URLSearchParams(location.search).get("tag") || "leather_resnet50_c10";
+
+// the reference ships fp16 for the web, but parity is checked in f32 first so a
+// mismatch means the kernel is wrong rather than the quantisation being lossy
+async function main() {
+  if (!navigator.gpu) { fail("no WebGPU in this browser"); return; }
+  const adapter = await navigator.gpu.requestAdapter();
+  if (!adapter) { fail("no GPU adapter"); return; }
+  const device = await adapter.requestDevice();
+  device.addEventListener?.("uncapturederror", (e) => log("GPU error: " + e.error.message));
+
+  log("adapter: " + (adapter.info?.description || adapter.info?.vendor || "unknown"));
+  log("maxStorageBufferBindingSize: " + (adapter.limits.maxStorageBufferBindingSize / 1e6).toFixed(0) + " MB");
+
+  const [bankBuf, goldens, side, wgsl] = await Promise.all([
+    fetch(`../../artifacts/bank_${TAG}.f32.bin`).then(r => r.arrayBuffer()),
+    fetch(`../../artifacts/goldens_${TAG}.json`).then(r => r.json()),
+    fetch(`../../artifacts/sidecar_${TAG}.json`).then(r => r.json()),
+    fetch("../kernels/knn.wgsl").then(r => r.text()),
+  ]);
+
+  const D = side.bank.dims, N = side.bank.rows;
+  log(`bank ${N} x ${D}  (${(bankBuf.byteLength/1e6).toFixed(1)} MB f32)`);
+  log(`backbone ${side.provenance.backbone}  weights ${side.provenance.weights_sha256.slice(0,12)}`);
+  log(`goldens: ${goldens.length}`);
+  if (bankBuf.byteLength !== N * D * 4) { fail("bank byte length does not match the sidecar"); return; }
+
+  const bank = new Float32Array(bankBuf);
+  const Q = goldens.length;
+  const queries = new Float32Array(Q * D);
+  goldens.forEach((g, i) => queries.set(g.query, i * D));
+
+  const mk = (data, usage) => {
+    const b = device.createBuffer({ size: data.byteLength, usage, mappedAtCreation: true });
+    new (data.constructor)(b.getMappedRange()).set(data);
+    b.unmap();
+    return b;
+  };
+  const S = GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST | GPUBufferUsage.COPY_SRC;
+  const bankGPU = mk(bank, GPUBufferUsage.STORAGE);
+  const qGPU = mk(queries, GPUBufferUsage.STORAGE);
+
+  // readback liveness: prefill with a sentinel. if it survives, the kernel never
+  // wrote and we would otherwise be reading our own initial values back as if
+  // they were results. Inkwell already shipped with exactly this bug once.
+  const SENTINEL = -12345.0;
+  const minGPU = mk(new Float32Array(Q).fill(SENTINEL), S);
+  const idxGPU = mk(new Uint32Array(Q).fill(0xDEADBEEF), S);
+  const params = mk(new Uint32Array([N, Q, D, 0]),
+                    GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST);
+
+  const mod = device.createShaderModule({ code: wgsl });
+  const info = await mod.getCompilationInfo();
+  info.messages.forEach(m => log(`shader ${m.type}: ${m.message}`));
+
+  const pipe = device.createComputePipeline({ layout: "auto", compute: { module: mod, entryPoint: "knn" } });
+  const bind = device.createBindGroup({ layout: pipe.getBindGroupLayout(0), entries: [
+    { binding: 0, resource: { buffer: bankGPU } },
+    { binding: 1, resource: { buffer: qGPU } },
+    { binding: 2, resource: { buffer: minGPU } },
+    { binding: 3, resource: { buffer: idxGPU } },
+    { binding: 4, resource: { buffer: params } },
+  ]});
+
+  const run = () => {
+    const enc = device.createCommandEncoder();
+    const p = enc.beginComputePass();
+    p.setPipeline(pipe); p.setBindGroup(0, bind);
+    p.dispatchWorkgroups(Q);
+    p.end();
+    device.queue.submit([enc.finish()]);
+  };
+
+  run();
+  await device.queue.onSubmittedWorkDone();
+  const t0 = performance.now();
+  run();
+  await device.queue.onSubmittedWorkDone();
+  const ms = performance.now() - t0;
+
+  const read = async (buf, Type, n) => {
+    const dst = device.createBuffer({ size: n * Type.BYTES_PER_ELEMENT,
+      usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ });
+    const enc = device.createCommandEncoder();
+    enc.copyBufferToBuffer(buf, 0, dst, 0, n * Type.BYTES_PER_ELEMENT);
+    device.queue.submit([enc.finish()]);
+    await dst.mapAsync(GPUMapMode.READ);
+    const v = new Type(dst.getMappedRange()).slice();
+    dst.unmap(); dst.destroy();
+    return v;
+  };
+  const gotMin = await read(minGPU, Float32Array, Q);
+  const gotIdx = await read(idxGPU, Uint32Array, Q);
+
+  if (gotMin.some(v => v === SENTINEL)) { fail("SENTINEL SURVIVED: the kernel never wrote. Any 'parity' below would be fiction."); return; }
+  log(`sentinel cleared, kernel really ran. ${Q} queries x ${N} bank rows in ${ms.toFixed(1)} ms`);
+  log(`~${((2*Q*N*D)/ms/1e6).toFixed(1)} GFLOP/s`);
+
+  // tolerance: bank and query are f32 here, accumulation is f32 over D=1536
+  // terms, so worst case error grows like sqrt(D)*eps*scale. this is a derived
+  // bound, not a number tuned until the table went green.
+  const EPS = 1.1920929e-7;
+  let rows = "", nFail = 0;
+  for (let i = 0; i < Q; i++) {
+    const g = goldens[i], e = g.expect;
+    const tol = Math.max(1e-4, Math.sqrt(D) * EPS * Math.max(1, e.min_distance) * 8);
+    const dd = Math.abs(gotMin[i] - e.min_distance);
+    const idxOk = gotIdx[i] === e.argmin || dd < tol;  // ties may pick either row
+    const ok = dd < tol && idxOk;
+    if (!ok) nFail++;
+    rows += `<tr><td class="name">${g.name}</td>
+      <td>${e.min_distance.toFixed(6)}</td><td>${gotMin[i].toFixed(6)}</td>
+      <td>${dd.toExponential(2)}</td><td>${tol.toExponential(1)}</td>
+      <td>${e.argmin}</td><td>${gotIdx[i]}</td>
+      <td class="${ok ? "pass" : "fail"}">${ok ? "pass" : "FAIL"}</td></tr>`;
+  }
+  document.getElementById("out").innerHTML = `<table>
+    <tr><th>golden</th><th>expected d</th><th>got d</th><th>|diff|</th><th>tol</th>
+        <th>exp idx</th><th>got idx</th><th>verdict</th></tr>${rows}</table>`;
+
+  const v = document.getElementById("verdict");
+  if (nFail === 0) {
+    v.className = "pass"; v.style.background = "#0e2a1a";
+    v.textContent = `PARITY PASS: ${Q}/${Q} goldens match the float64 reference`;
+  } else {
+    v.className = "fail"; v.style.background = "#2a0e12";
+    v.textContent = `PARITY FAIL: ${nFail}/${Q} goldens disagree. Do not build UI on this.`;
+  }
+}
+function fail(m) {
+  const v = document.getElementById("verdict");
+  v.className = "fail"; v.style.background = "#2a0e12"; v.textContent = m;
+}
+main().catch(e => { fail("crashed: " + e.message); log(e.stack); });
+</script>
+</body>
+</html>

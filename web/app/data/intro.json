@@ -1,0 +1,34 @@
+{
+  "note": "Intro copy for people who do not read AUROC, kept as data so the page hand-types nothing. Second draft, matched to the Windfield and Orrery READMEs, and every number in it comes from the measured runs. Safeer reads it once and edits it before it ships.",
+  "headline": "Eight kinds of real parts, an inspector that has never seen a defect, scored on your GPU.",
+  "paragraphs": [
+    "A factory makes thousands of parts a day, and a few of them come out wrong, and someone has to catch those few before they reach a customer. The obvious way to teach a computer the job is to show it plenty of faulty parts, and that is the one thing a real factory cannot supply. Good parts pile up by the thousand and bad ones stay rare, and the next fault to come down the line will be one nobody has photographed.",
+    "Nazar learns the job the other way round. It studies photographs of good parts and nothing else, builds a memory of what normal looks like down to small patches of the surface, and scores a new part by asking whether any patch of it sits far from everything in that memory. A defect is exactly that, a patch unlike anything it remembers."
+  ],
+  "what_you_are_looking_at": [
+    "Pick a part below, and the red patch is where Nazar found the surface least like its memory of good ones.",
+    "Real photographs, none of them from a factory. They are MVTec AD, a public benchmark used by inspection researchers: screws, capsules, pills, cables, metal nuts, transistors, leather, and hazelnuts, photographed on one bench under one fixed light.",
+    "The memory behind each kind of part was built from photographs of good parts only, 320 of them for the screw, and no defect ever went into it.",
+    "The search that scores a part runs in this browser tab, on your own graphics card, and nothing is sent anywhere to be scored. Scoring one part means roughly 19.7 million comparisons against the memory and takes about 150 ms on a laptop. The heavy step, turning each photograph into the numbers the search compares, was done offline in advance, and only the search runs live here.",
+    "Every part ships with the score the offline pipeline computed for it, and the page checks its own answer against that number live, on screen."
+  ],
+  "the_two_questions": {
+    "intro": "One accuracy number does not tell a factory much, and the decision to put a system like this on a line comes down to two questions.",
+    "items": [
+      {
+        "q": "How many good parts do I have to collect first?",
+        "a": "Nazar needs examples of normal before it can point at anything else, and collecting them costs time on a running line. On the screw the answer is a curve: 1 good part in the memory scores 0.482 at telling good parts from bad, 2 score 0.464, 5 score 0.493, 10 score 0.570, 25 score 0.706, and all 320 reach 0.964, on a scale where 1.0 is perfect and 0.5 is a coin toss. With 5 or fewer it is worse than the coin toss, because with a handful of reference screws the search mostly measures pose and rotation, and an oddly rotated good screw then looks stranger than a real defect. The chart on this page is that curve, measured."
+      },
+      {
+        "q": "Where do I draw the line?",
+        "a": "Every part gets a score, and someone has to choose the score at which the line stops. That choice is the product: a missed defect reaches a customer, and a false alarm stops the line, and the two mistakes rarely cost the same. With only good parts to calibrate on, you can set the line so that a chosen share of good parts gets flagged by mistake, but how many defects slip through you only learn once real defects start appearing. There is no calibration split in this data, so the page ships no default line and says so on screen. On the screw at the shipped setting, 45 of the 119 defective parts score below the worst good part, so no line catches them without also flagging good ones."
+      }
+    ]
+  },
+  "honest_bits": [
+    "Every number here was measured on MVTec AD, real parts photographed on one bench under one fixed light. A production line looks nothing like that bench, and the only number that would mean anything on a line is one measured on that line.",
+    "Leather scores a perfect 1.0000, and that proves less than it looks: with its memory deliberately scrambled, leather still scores 0.9487. An easy surface flatters any method, and the screw, which is not easy, is the one worth watching.",
+    "It is not always right, and the misses are shown rather than hidden. A section further down goes through the screw defects that escape, the worst two kinds being faults on the side of the thread, 15 of 23 missed, and manipulated fronts, 13 of 24. That section is there on purpose."
+  ],
+  "credits": "The method is PatchCore, Roth and others, CVPR 2022. The photographs are MVTec AD, Bergmann and others, used under the CC BY-NC-SA 4.0 licence."
+}

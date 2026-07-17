@@ -1,0 +1,220 @@
+{
+  "category": "screw",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_screw_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "screw_scratch_neck_009",
+      "label": 1,
+      "defect_type": "scratch_neck",
+      "file": "009.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.4599170823525855,
+        "w": 0.9109826469480734,
+        "d_star": 2.7002897262573238,
+        "map_max": 2.480909824371338,
+        "map_min": 0.8097520470619202
+      }
+    },
+    {
+      "name": "screw_scratch_neck_001",
+      "label": 1,
+      "defect_type": "scratch_neck",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.3763277138685446,
+        "w": 0.9112351474024184,
+        "d_star": 2.607809543609619,
+        "map_max": 2.4560699462890625,
+        "map_min": 0.7054301500320435
+      }
+    },
+    {
+      "name": "screw_scratch_neck_003",
+      "label": 1,
+      "defect_type": "scratch_neck",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.351851225595361,
+        "w": 0.9174785602427026,
+        "d_star": 2.563385486602783,
+        "map_max": 2.4092893600463867,
+        "map_min": 0.7503638863563538
+      }
+    },
+    {
+      "name": "screw_scratch_neck_016",
+      "label": 1,
+      "defect_type": "scratch_neck",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.348908576935918,
+        "w": 0.9119217253321442,
+        "d_star": 2.5757787227630615,
+        "map_max": 2.4357542991638184,
+        "map_min": 0.5898967385292053
+      }
+    },
+    {
+      "name": "screw_good_024",
+      "label": 0,
+      "defect_type": "good",
+      "file": "024.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6816269238672705,
+        "w": 0.9379882272674479,
+        "d_star": 1.7928017377853394,
+        "map_max": 1.650248408317566,
+        "map_min": 0.9042751789093018
+      }
+    },
+    {
+      "name": "screw_good_004",
+      "label": 0,
+      "defect_type": "good",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6530395404608822,
+        "w": 0.9285017910505468,
+        "d_star": 1.780329942703247,
+        "map_max": 1.6840471029281616,
+        "map_min": 0.8906100988388062
+      }
+    },
+    {
+      "name": "screw_thread_side_019",
+      "label": 1,
+      "defect_type": "thread_side",
+      "file": "019.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.5198078052164001,
+        "w": 0.9172757698824813,
+        "d_star": 1.6568711996078491,
+        "map_max": 1.624936819076538,
+        "map_min": 0.5986438989639282
+      }
+    },
+    {
+      "name": "screw_manipulated_front_021",
+      "label": 1,
+      "defect_type": "manipulated_front",
+      "file": "021.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.5108260580045838,
+        "w": 0.931232884850565,
+        "d_star": 1.6223933696746826,
+        "map_max": 1.4999732971191406,
+        "map_min": 0.9110704660415649
+      }
+    },
+    {
+      "name": "screw_scratch_head_009",
+      "label": 1,
+      "defect_type": "scratch_head",
+      "file": "009.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.4885212332181679,
+        "w": 0.9116025421643599,
+        "d_star": 1.6328620910644531,
+        "map_max": 1.5868688821792603,
+        "map_min": 0.8283224105834961
+      }
+    },
+    {
+      "name": "screw_good_016",
+      "label": 0,
+      "defect_type": "good",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.3916827746132217,
+        "w": 0.9125292354912534,
+        "d_star": 1.5250829458236694,
+        "map_max": 1.4687533378601074,
+        "map_min": 0.820650577545166
+      }
+    },
+    {
+      "name": "screw_good_025",
+      "label": 0,
+      "defect_type": "good",
+      "file": "025.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.3888231629320504,
+        "w": 0.9102515415020587,
+        "d_star": 1.5257575511932373,
+        "map_max": 1.4718422889709473,
+        "map_min": 0.869720458984375
+      }
+    }
+  ]
+}

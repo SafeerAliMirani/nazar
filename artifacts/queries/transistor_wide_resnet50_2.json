@@ -1,0 +1,220 @@
+{
+  "category": "transistor",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_transistor_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "transistor_misplaced_008",
+      "label": 1,
+      "defect_type": "misplaced",
+      "file": "008.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.536866631149476,
+        "w": 0.9052319924373139,
+        "d_star": 3.9071383476257324,
+        "map_max": 3.847371816635132,
+        "map_min": 1.322506308555603
+      }
+    },
+    {
+      "name": "transistor_misplaced_007",
+      "label": 1,
+      "defect_type": "misplaced",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.3064554127845427,
+        "w": 0.906319810718634,
+        "d_star": 3.6482214927673344,
+        "map_max": 3.556279420852661,
+        "map_min": 1.3101065158843994
+      }
+    },
+    {
+      "name": "transistor_misplaced_005",
+      "label": 1,
+      "defect_type": "misplaced",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.171532469680338,
+        "w": 0.9079840520698224,
+        "d_star": 3.49293851852417,
+        "map_max": 3.426450252532959,
+        "map_min": 1.1311745643615723
+      }
+    },
+    {
+      "name": "transistor_damaged_case_009",
+      "label": 1,
+      "defect_type": "damaged_case",
+      "file": "009.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.8900452177858016,
+        "w": 0.9066872275662329,
+        "d_star": 3.1874775886535645,
+        "map_max": 3.1322152614593506,
+        "map_min": 1.0588356256484985
+      }
+    },
+    {
+      "name": "transistor_good_045",
+      "label": 0,
+      "defect_type": "good",
+      "file": "045.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.0183392108141707,
+        "w": 0.9192141253357088,
+        "d_star": 2.1957225799560547,
+        "map_max": 2.0335538387298584,
+        "map_min": 0.944739580154419
+      }
+    },
+    {
+      "name": "transistor_good_044",
+      "label": 0,
+      "defect_type": "good",
+      "file": "044.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.967308963105504,
+        "w": 0.9197425958991877,
+        "d_star": 2.1389777660369873,
+        "map_max": 1.9783471822738647,
+        "map_min": 0.8057511448860168
+      }
+    },
+    {
+      "name": "transistor_misplaced_000",
+      "label": 1,
+      "defect_type": "misplaced",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.1588849284335114,
+        "w": 0.9112064861728757,
+        "d_star": 2.369259834289551,
+        "map_max": 2.2903172969818115,
+        "map_min": 1.0913692712783813
+      }
+    },
+    {
+      "name": "transistor_damaged_case_002",
+      "label": 1,
+      "defect_type": "damaged_case",
+      "file": "002.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.093213458007849,
+        "w": 0.9072265738718407,
+        "d_star": 2.307266473770142,
+        "map_max": 2.2605934143066406,
+        "map_min": 1.0914407968521118
+      }
+    },
+    {
+      "name": "transistor_bent_lead_001",
+      "label": 1,
+      "defect_type": "bent_lead",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.028475852973092,
+        "w": 0.9222347474114803,
+        "d_star": 2.1995222568511963,
+        "map_max": 2.053029775619507,
+        "map_min": 1.2262358665466309
+      }
+    },
+    {
+      "name": "transistor_good_007",
+      "label": 0,
+      "defect_type": "good",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6504363624275693,
+        "w": 0.9142448793429738,
+        "d_star": 1.8052453994750977,
+        "map_max": 1.740264654159546,
+        "map_min": 1.0420581102371216
+      }
+    },
+    {
+      "name": "transistor_good_034",
+      "label": 0,
+      "defect_type": "good",
+      "file": "034.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6387651343989444,
+        "w": 0.9054683628868991,
+        "d_star": 1.8098535537719724,
+        "map_max": 1.7113226652145386,
+        "map_min": 1.100594162940979
+      }
+    }
+  ]
+}

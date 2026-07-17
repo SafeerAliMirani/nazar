@@ -1,0 +1,220 @@
+{
+  "category": "metal_nut",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_metal_nut_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "metal_nut_flip_011",
+      "label": 1,
+      "defect_type": "flip",
+      "file": "011.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.179897705328873,
+        "w": 0.9052795094602578,
+        "d_star": 3.5126142501831055,
+        "map_max": 3.4091908931732178,
+        "map_min": 1.1794131994247437
+      }
+    },
+    {
+      "name": "metal_nut_flip_001",
+      "label": 1,
+      "defect_type": "flip",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.1399230227056925,
+        "w": 0.9204326628787324,
+        "d_star": 3.411355495452881,
+        "map_max": 3.303391695022583,
+        "map_min": 1.3227529525756836
+      }
+    },
+    {
+      "name": "metal_nut_flip_000",
+      "label": 1,
+      "defect_type": "flip",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.060948811007975,
+        "w": 0.9102389442790723,
+        "d_star": 3.3627970218658447,
+        "map_max": 3.25270938873291,
+        "map_min": 1.229853868484497
+      }
+    },
+    {
+      "name": "metal_nut_flip_015",
+      "label": 1,
+      "defect_type": "flip",
+      "file": "015.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.023360384375942,
+        "w": 0.9122152821582208,
+        "d_star": 3.3143057823181152,
+        "map_max": 3.2155463695526123,
+        "map_min": 1.3341158628463745
+      }
+    },
+    {
+      "name": "metal_nut_good_005",
+      "label": 0,
+      "defect_type": "good",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.1060997597664852,
+        "w": 0.9283062098275622,
+        "d_star": 2.2687554359436035,
+        "map_max": 2.169166088104248,
+        "map_min": 0.9839333295822144
+      }
+    },
+    {
+      "name": "metal_nut_good_016",
+      "label": 0,
+      "defect_type": "good",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.096884584133111,
+        "w": 0.9131710529927338,
+        "d_star": 2.296267032623291,
+        "map_max": 2.2546210289001465,
+        "map_min": 1.0553025007247925
+      }
+    },
+    {
+      "name": "metal_nut_scratch_020",
+      "label": 1,
+      "defect_type": "scratch",
+      "file": "020.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.14631160770005,
+        "w": 0.90921878238437,
+        "d_star": 2.3606107234954834,
+        "map_max": 2.3260486125946045,
+        "map_min": 0.9029363393783569
+      }
+    },
+    {
+      "name": "metal_nut_bent_007",
+      "label": 1,
+      "defect_type": "bent",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.110650270054735,
+        "w": 0.9265251610448149,
+        "d_star": 2.2780280113220215,
+        "map_max": 2.1929900646209717,
+        "map_min": 0.9311591386795044
+      }
+    },
+    {
+      "name": "metal_nut_scratch_022",
+      "label": 1,
+      "defect_type": "scratch",
+      "file": "022.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.051772406941641,
+        "w": 0.9129588342743021,
+        "d_star": 2.247387647628784,
+        "map_max": 2.1787779331207275,
+        "map_min": 0.9713785648345947
+      }
+    },
+    {
+      "name": "metal_nut_good_020",
+      "label": 0,
+      "defect_type": "good",
+      "file": "020.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.852094129644957,
+        "w": 0.915460123338835,
+        "d_star": 2.0231292247772217,
+        "map_max": 1.9496725797653198,
+        "map_min": 0.9862355589866638
+      }
+    },
+    {
+      "name": "metal_nut_good_018",
+      "label": 0,
+      "defect_type": "good",
+      "file": "018.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.8155050344773829,
+        "w": 0.9122206935998921,
+        "d_star": 1.9902037382125854,
+        "map_max": 1.8893628120422363,
+        "map_min": 0.7964516878128052
+      }
+    }
+  ]
+}

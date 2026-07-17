@@ -1,0 +1,76 @@
+{
+  "note": "File list only. Every label and figure the page shows is read out of the files named here, never out of this manifest. Copied from pipeline/runs by the supervisor step, publish_to_app.py.",
+  "shipped_config": {
+    "backbone": "wide_resnet50_2 IMAGENET1K_V1",
+    "coreset_pct": 0.02
+  },
+  "primary_run": "ship_screw",
+  "runs": [
+    {
+      "id": "ship_screw",
+      "metrics": "metrics_ship_screw.json",
+      "source": "pipeline/runs/ship_screw",
+      "scores": "scores_ship_screw.csv",
+      "heatmaps": "heatmaps_ship_screw.json"
+    },
+    {
+      "id": "ship_capsule",
+      "metrics": "metrics_ship_capsule.json",
+      "source": "pipeline/runs/ship_capsule",
+      "scores": "scores_ship_capsule.csv",
+      "heatmaps": "heatmaps_ship_capsule.json"
+    },
+    {
+      "id": "ship_pill",
+      "metrics": "metrics_ship_pill.json",
+      "source": "pipeline/runs/ship_pill",
+      "scores": "scores_ship_pill.csv",
+      "heatmaps": "heatmaps_ship_pill.json"
+    },
+    {
+      "id": "ship_cable",
+      "metrics": "metrics_ship_cable.json",
+      "source": "pipeline/runs/ship_cable",
+      "scores": "scores_ship_cable.csv",
+      "heatmaps": "heatmaps_ship_cable.json"
+    },
+    {
+      "id": "ship_metal_nut",
+      "metrics": "metrics_ship_metal_nut.json",
+      "source": "pipeline/runs/ship_metal_nut",
+      "scores": "scores_ship_metal_nut.csv",
+      "heatmaps": "heatmaps_ship_metal_nut.json"
+    },
+    {
+      "id": "ship_transistor",
+      "metrics": "metrics_ship_transistor.json",
+      "source": "pipeline/runs/ship_transistor",
+      "scores": "scores_ship_transistor.csv",
+      "heatmaps": "heatmaps_ship_transistor.json"
+    },
+    {
+      "id": "ship_leather",
+      "metrics": "metrics_ship_leather.json",
+      "source": "pipeline/runs/ship_leather",
+      "scores": "scores_ship_leather.csv",
+      "heatmaps": "heatmaps_ship_leather.json"
+    },
+    {
+      "id": "ship_hazelnut",
+      "metrics": "metrics_ship_hazelnut.json",
+      "source": "pipeline/runs/ship_hazelnut",
+      "scores": "scores_ship_hazelnut.csv",
+      "heatmaps": "heatmaps_ship_hazelnut.json"
+    },
+    {
+      "id": "ship_leather_ablated",
+      "metrics": "metrics_ship_leather_ablated.json",
+      "source": "pipeline/runs/ship_leather_ablated",
+      "note": "bank deliberately destroyed, kept as evidence"
+    }
+  ],
+  "curve": "curve.json",
+  "categories": "categories.json",
+  "compression": "compression.json",
+  "sidecar": "sidecar_screw_wide_resnet50_2_c2.json"
+}

@@ -1,0 +1,220 @@
+{
+  "category": "cable",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_cable_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "cable_bent_wire_011",
+      "label": 1,
+      "defect_type": "bent_wire",
+      "file": "011.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.806642363632885,
+        "w": 0.9220502811710045,
+        "d_star": 4.128454208374023,
+        "map_max": 4.020541667938232,
+        "map_min": 1.3089948892593384
+      }
+    },
+    {
+      "name": "cable_combined_008",
+      "label": 1,
+      "defect_type": "combined",
+      "file": "008.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.727977274313729,
+        "w": 0.9130684604739846,
+        "d_star": 4.082911014556885,
+        "map_max": 3.9164419174194336,
+        "map_min": 1.4448148012161255
+      }
+    },
+    {
+      "name": "cable_bent_wire_009",
+      "label": 1,
+      "defect_type": "bent_wire",
+      "file": "009.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.611592799582482,
+        "w": 0.9127564629926478,
+        "d_star": 3.9567978382110596,
+        "map_max": 3.9060561656951904,
+        "map_min": 1.3909703493118286
+      }
+    },
+    {
+      "name": "cable_bent_wire_004",
+      "label": 1,
+      "defect_type": "bent_wire",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.598225258840858,
+        "w": 0.9126133662855827,
+        "d_star": 3.9427707195281982,
+        "map_max": 3.8032586574554443,
+        "map_min": 1.400838017463684
+      }
+    },
+    {
+      "name": "cable_good_041",
+      "label": 0,
+      "defect_type": "good",
+      "file": "041.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.330366243460255,
+        "w": 0.9160987635729022,
+        "d_star": 2.5437936782836914,
+        "map_max": 2.419823169708252,
+        "map_min": 1.4486727714538574
+      }
+    },
+    {
+      "name": "cable_good_051",
+      "label": 0,
+      "defect_type": "good",
+      "file": "051.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.3037689960624492,
+        "w": 0.9248753649181384,
+        "d_star": 2.490896701812744,
+        "map_max": 2.33992862701416,
+        "map_min": 1.447629690170288
+      }
+    },
+    {
+      "name": "cable_cable_swap_011",
+      "label": 1,
+      "defect_type": "cable_swap",
+      "file": "011.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.3321006442432135,
+        "w": 0.9175253881963349,
+        "d_star": 2.5417287349700928,
+        "map_max": 2.477334499359131,
+        "map_min": 1.3606858253479004
+      }
+    },
+    {
+      "name": "cable_poke_insulation_002",
+      "label": 1,
+      "defect_type": "poke_insulation",
+      "file": "002.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.274782888212287,
+        "w": 0.9179079612111859,
+        "d_star": 2.4782254695892334,
+        "map_max": 2.379817485809326,
+        "map_min": 1.419778823852539
+      }
+    },
+    {
+      "name": "cable_cable_swap_006",
+      "label": 1,
+      "defect_type": "cable_swap",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.2386521709793925,
+        "w": 0.9097152510185624,
+        "d_star": 2.460827350616455,
+        "map_max": 2.400766372680664,
+        "map_min": 1.4044965505599976
+      }
+    },
+    {
+      "name": "cable_good_024",
+      "label": 0,
+      "defect_type": "good",
+      "file": "024.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9997602917742028,
+        "w": 0.9228445987025328,
+        "d_star": 2.16695237159729,
+        "map_max": 2.0830698013305664,
+        "map_min": 1.3508987426757812
+      }
+    },
+    {
+      "name": "cable_good_006",
+      "label": 0,
+      "defect_type": "good",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9685354047101773,
+        "w": 0.9173865610017315,
+        "d_star": 2.145807981491089,
+        "map_max": 2.054983377456665,
+        "map_min": 1.2549208402633667
+      }
+    }
+  ]
+}

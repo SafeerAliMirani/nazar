@@ -1,0 +1,220 @@
+{
+  "category": "pill",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_pill_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "pill_pill_type_006",
+      "label": 1,
+      "defect_type": "pill_type",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.826872523767463,
+        "w": 0.9094677381726723,
+        "d_star": 3.108271360397339,
+        "map_max": 3.0767807960510254,
+        "map_min": 0.936515748500824
+      }
+    },
+    {
+      "name": "pill_pill_type_000",
+      "label": 1,
+      "defect_type": "pill_type",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.797440672985132,
+        "w": 0.9117872976811738,
+        "d_star": 3.068084716796875,
+        "map_max": 3.0314266681671143,
+        "map_min": 1.063338279724121
+      }
+    },
+    {
+      "name": "pill_contamination_003",
+      "label": 1,
+      "defect_type": "contamination",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.7967749571700513,
+        "w": 0.911729020285505,
+        "d_star": 3.0675506591796875,
+        "map_max": 2.895078420639038,
+        "map_min": 0.7849293351173401
+      }
+    },
+    {
+      "name": "pill_pill_type_001",
+      "label": 1,
+      "defect_type": "pill_type",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.7479878188240203,
+        "w": 0.9098813323167293,
+        "d_star": 3.020160675048828,
+        "map_max": 2.979823350906372,
+        "map_min": 0.9733489155769348
+      }
+    },
+    {
+      "name": "pill_good_023",
+      "label": 0,
+      "defect_type": "good",
+      "file": "023.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9586885676922516,
+        "w": 0.9103959084528037,
+        "d_star": 2.1514689922332764,
+        "map_max": 2.0580687522888184,
+        "map_min": 0.5945959687232971
+      }
+    },
+    {
+      "name": "pill_good_019",
+      "label": 0,
+      "defect_type": "good",
+      "file": "019.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9140390952675759,
+        "w": 0.9232827663304295,
+        "d_star": 2.073080062866211,
+        "map_max": 1.9900351762771606,
+        "map_min": 0.6478413343429565
+      }
+    },
+    {
+      "name": "pill_crack_003",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6872752409490537,
+        "w": 0.9143395692730407,
+        "d_star": 1.845348596572876,
+        "map_max": 1.756554365158081,
+        "map_min": 0.6330173015594482
+      }
+    },
+    {
+      "name": "pill_crack_016",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6699257129322365,
+        "w": 0.9196903722307933,
+        "d_star": 1.8157477378845215,
+        "map_max": 1.756371021270752,
+        "map_min": 0.6270610094070435
+      }
+    },
+    {
+      "name": "pill_crack_024",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "024.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6513705107726309,
+        "w": 0.9144979604155261,
+        "d_star": 1.805767297744751,
+        "map_max": 1.7610985040664673,
+        "map_min": 0.6951654553413391
+      }
+    },
+    {
+      "name": "pill_good_009",
+      "label": 0,
+      "defect_type": "good",
+      "file": "009.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.589299982823954,
+        "w": 0.9169754692352647,
+        "d_star": 1.7331979274749756,
+        "map_max": 1.6990102529525757,
+        "map_min": 0.8704137206077576
+      }
+    },
+    {
+      "name": "pill_good_004",
+      "label": 0,
+      "defect_type": "good",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.568232200861659,
+        "w": 0.9100529013251978,
+        "d_star": 1.7232319116592407,
+        "map_max": 1.6558650732040405,
+        "map_min": 0.7674344778060913
+      }
+    }
+  ]
+}

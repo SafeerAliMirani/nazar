@@ -1,0 +1,51 @@
+{
+  "category": "transistor",
+  "seed": 0,
+  "coreset_pct": 0.02,
+  "image_auroc_plain": 1.0,
+  "image_auroc_eq7": 1.0,
+  "image_auroc": 1.0,
+  "pixel_auroc": 0.9757516091876024,
+  "n_train": 213,
+  "n_test": 100,
+  "n_test_good": 60,
+  "n_test_defect": 40,
+  "test_counts": {
+    "bent_lead": 10,
+    "cut_lead": 10,
+    "damaged_case": 10,
+    "good": 60,
+    "misplaced": 10
+  },
+  "bank_size": 3340,
+  "w_p10": 0.9067240644393842,
+  "w_median": 0.913515243198719,
+  "w_std": 0.006759079306384453,
+  "ablate_bank": "none",
+  "permute_labels": false,
+  "config": {
+    "data_root": "D:\\data\\mvtec_ad",
+    "device": "cuda",
+    "backbone": "wide_resnet50_2 IMAGENET1K_V1",
+    "balance_blocks": false,
+    "weights_sha256": "95faca4d11227dddf8633dbb5ff6c8a9003c1aa5b8945c73834b8007b10950b8",
+    "taps": [
+      "layer2",
+      "layer3"
+    ],
+    "resize": 256,
+    "crop": 224,
+    "patch_pool": "avg 3x3 stride 1 pad 1",
+    "grid": [
+      28,
+      28
+    ],
+    "feature_dim": 1536,
+    "projection_dim": 296,
+    "blur_sigma": 4.0,
+    "b_nearest": 9,
+    "batch": 16,
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  }
+}

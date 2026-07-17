@@ -1,0 +1,220 @@
+{
+  "category": "capsule",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_capsule_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "capsule_crack_001",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.264472809705317,
+        "w": 0.9002772964994253,
+        "d_star": 3.62607479095459,
+        "map_max": 3.5060293674468994,
+        "map_min": 0.5736083984375
+      }
+    },
+    {
+      "name": "capsule_poke_000",
+      "label": 1,
+      "defect_type": "poke",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.9329037744385995,
+        "w": 0.9046680018887558,
+        "d_star": 3.2419669628143315,
+        "map_max": 3.117854595184326,
+        "map_min": 0.5333623886108398
+      }
+    },
+    {
+      "name": "capsule_squeeze_007",
+      "label": 1,
+      "defect_type": "squeeze",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.8230987820745828,
+        "w": 0.904822238932051,
+        "d_star": 3.1200590133666988,
+        "map_max": 3.0924742221832275,
+        "map_min": 0.5362022519111633
+      }
+    },
+    {
+      "name": "capsule_crack_010",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "010.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.7924496398402474,
+        "w": 0.9073543184324192,
+        "d_star": 3.077573537826538,
+        "map_max": 2.9529733657836914,
+        "map_min": 0.5087701082229614
+      }
+    },
+    {
+      "name": "capsule_good_021",
+      "label": 0,
+      "defect_type": "good",
+      "file": "021.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.5632227795891898,
+        "w": 0.9277385293367715,
+        "d_star": 1.6849820613861084,
+        "map_max": 1.651576042175293,
+        "map_min": 0.5408564805984497
+      }
+    },
+    {
+      "name": "capsule_good_006",
+      "label": 0,
+      "defect_type": "good",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.4104632304267657,
+        "w": 0.913395160204264,
+        "d_star": 1.5441982746124268,
+        "map_max": 1.4150209426879883,
+        "map_min": 0.519726574420929
+      }
+    },
+    {
+      "name": "capsule_scratch_012",
+      "label": 1,
+      "defect_type": "scratch",
+      "file": "012.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.2968429959581222,
+        "w": 0.9031868375629117,
+        "d_star": 1.4358524084091187,
+        "map_max": 1.3611388206481934,
+        "map_min": 0.5942953824996948
+      }
+    },
+    {
+      "name": "capsule_scratch_005",
+      "label": 1,
+      "defect_type": "scratch",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.1587668622762681,
+        "w": 0.9084593043204908,
+        "d_star": 1.2755297422409058,
+        "map_max": 1.206427812576294,
+        "map_min": 0.5872306823730469
+      }
+    },
+    {
+      "name": "capsule_scratch_017",
+      "label": 1,
+      "defect_type": "scratch",
+      "file": "017.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.1488437862975152,
+        "w": 0.9131309209900558,
+        "d_star": 1.2581369876861572,
+        "map_max": 1.2047978639602661,
+        "map_min": 0.5765148401260376
+      }
+    },
+    {
+      "name": "capsule_good_013",
+      "label": 0,
+      "defect_type": "good",
+      "file": "013.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.0378727126879863,
+        "w": 0.9103656454643247,
+        "d_star": 1.140061378479004,
+        "map_max": 1.0676422119140625,
+        "map_min": 0.561812698841095
+      }
+    },
+    {
+      "name": "capsule_good_005",
+      "label": 0,
+      "defect_type": "good",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.0270425657867674,
+        "w": 0.9084093130575406,
+        "d_star": 1.1305944919586182,
+        "map_max": 1.0314011573791504,
+        "map_min": 0.4657568037509918
+      }
+    }
+  ]
+}

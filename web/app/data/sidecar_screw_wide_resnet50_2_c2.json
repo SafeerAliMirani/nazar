@@ -1,0 +1,64 @@
+{
+  "bank": {
+    "rows": 5018,
+    "dims": 1536,
+    "dtype_f16": "little-endian float16, row major",
+    "f16_bytes": 15415296
+  },
+  "nb9": {
+    "shape": [
+      5018,
+      9
+    ],
+    "dtype": "little-endian int32"
+  },
+  "provenance": {
+    "category": "screw",
+    "backbone": "wide_resnet50_2",
+    "weights_sha256": "95faca4d11227dddf8633dbb5ff6c8a9003c1aa5b8945c73834b8007b10950b8",
+    "seed": 0,
+    "coreset_pct": 0.02,
+    "projection_dim": 306,
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  },
+  "preprocessing": {
+    "resize": 256,
+    "interpolation": "bilinear",
+    "crop": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "features": {
+    "taps": [
+      "layer2",
+      "layer3"
+    ],
+    "pool": "avg 3x3 stride 1 pad 1",
+    "upsample": "bilinear align_corners=False onto layer2 grid",
+    "concat_order": [
+      "layer2",
+      "layer3"
+    ],
+    "grid": [
+      28,
+      28
+    ]
+  },
+  "scoring": {
+    "distance": "L2 (NOT squared: squared saturates the eq.7 exp)",
+    "b_nearest": 9,
+    "score": "w * d_star, w per eq.7",
+    "map": "pre-blur 28x28 min-distances, then bilinear to 224, gaussian sigma 4"
+  },
+  "tolerance": "goldens are float64. bank ships fp16 (~1e-3 relative), accumulate in fp32. expect distance error ~ sqrt(1536) * fp16 eps * scale. derive the bound, do not tune it until it passes.",
+  "warning": "resnet50 and wide_resnet50_2 banks are shape identical. never mix artifacts across backbones. loaders must check weights_sha256."
+}

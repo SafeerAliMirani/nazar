@@ -1,0 +1,220 @@
+{
+  "category": "hazelnut",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_hazelnut_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "hazelnut_print_008",
+      "label": 1,
+      "defect_type": "print",
+      "file": "008.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 4.115343893115565,
+        "w": 0.9085966646581594,
+        "d_star": 4.529340744018555,
+        "map_max": 4.394078731536865,
+        "map_min": 0.7777622938156128
+      }
+    },
+    {
+      "name": "hazelnut_print_002",
+      "label": 1,
+      "defect_type": "print",
+      "file": "002.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.8445734813504395,
+        "w": 0.9171295886380079,
+        "d_star": 4.191963195800781,
+        "map_max": 4.045927047729492,
+        "map_min": 0.7142289876937866
+      }
+    },
+    {
+      "name": "hazelnut_print_000",
+      "label": 1,
+      "defect_type": "print",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.636131468401763,
+        "w": 0.9100779488209112,
+        "d_star": 3.995406627655029,
+        "map_max": 3.916577100753784,
+        "map_min": 0.76373291015625
+      }
+    },
+    {
+      "name": "hazelnut_print_012",
+      "label": 1,
+      "defect_type": "print",
+      "file": "012.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.5813018305362,
+        "w": 0.9122411498270331,
+        "d_star": 3.925827980041504,
+        "map_max": 3.8414690494537354,
+        "map_min": 0.6723363399505615
+      }
+    },
+    {
+      "name": "hazelnut_good_005",
+      "label": 0,
+      "defect_type": "good",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.34102787891443,
+        "w": 0.921261820056138,
+        "d_star": 2.5411102771759033,
+        "map_max": 2.4558935165405273,
+        "map_min": 0.6615129113197327
+      }
+    },
+    {
+      "name": "hazelnut_good_036",
+      "label": 0,
+      "defect_type": "good",
+      "file": "036.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.2667265764762146,
+        "w": 0.9211208290178708,
+        "d_star": 2.4608352184295654,
+        "map_max": 2.4053828716278076,
+        "map_min": 0.7112299203872681
+      }
+    },
+    {
+      "name": "hazelnut_crack_016",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.611418168360888,
+        "w": 0.9222200903747686,
+        "d_star": 2.831664800643921,
+        "map_max": 2.7523112297058105,
+        "map_min": 0.7108993530273438
+      }
+    },
+    {
+      "name": "hazelnut_cut_001",
+      "label": 1,
+      "defect_type": "cut",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.4676720759683044,
+        "w": 0.9076497379935584,
+        "d_star": 2.7187492847442627,
+        "map_max": 2.6397509574890137,
+        "map_min": 0.6604787111282349
+      }
+    },
+    {
+      "name": "hazelnut_cut_006",
+      "label": 1,
+      "defect_type": "cut",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.4431757108207455,
+        "w": 0.9132595658687133,
+        "d_star": 2.6752259731292725,
+        "map_max": 2.582022190093994,
+        "map_min": 0.7055940628051758
+      }
+    },
+    {
+      "name": "hazelnut_good_015",
+      "label": 0,
+      "defect_type": "good",
+      "file": "015.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9273672198766794,
+        "w": 0.9191864004149815,
+        "d_star": 2.096818685531616,
+        "map_max": 2.044053792953491,
+        "map_min": 0.7463017702102661
+      }
+    },
+    {
+      "name": "hazelnut_good_035",
+      "label": 0,
+      "defect_type": "good",
+      "file": "035.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9190633163431694,
+        "w": 0.9139500162077695,
+        "d_star": 2.0997464656829834,
+        "map_max": 2.0521535873413086,
+        "map_min": 0.6721683740615845
+      }
+    }
+  ]
+}

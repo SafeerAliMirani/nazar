@@ -1,0 +1,220 @@
+{
+  "category": "leather",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_leather_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "leather_glue_005",
+      "label": 1,
+      "defect_type": "glue",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.538333722028584,
+        "w": 0.9029353814218375,
+        "d_star": 3.918700933456421,
+        "map_max": 3.820173740386963,
+        "map_min": 0.9243140816688538
+      }
+    },
+    {
+      "name": "leather_glue_000",
+      "label": 1,
+      "defect_type": "glue",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.5347564600552053,
+        "w": 0.90342347002955,
+        "d_star": 3.9126241207122803,
+        "map_max": 3.846818447113037,
+        "map_min": 0.9218270182609558
+      }
+    },
+    {
+      "name": "leather_glue_015",
+      "label": 1,
+      "defect_type": "glue",
+      "file": "015.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.533526556946192,
+        "w": 0.9034055702502928,
+        "d_star": 3.9113402366638184,
+        "map_max": 3.8077287673950195,
+        "map_min": 0.9578371047973633
+      }
+    },
+    {
+      "name": "leather_glue_014",
+      "label": 1,
+      "defect_type": "glue",
+      "file": "014.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.497222897248395,
+        "w": 0.9037326517467849,
+        "d_star": 3.869753837585449,
+        "map_max": 3.6855902671813965,
+        "map_min": 0.9134035110473633
+      }
+    },
+    {
+      "name": "leather_good_021",
+      "label": 0,
+      "defect_type": "good",
+      "file": "021.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.4468679927942207,
+        "w": 0.9103895225091982,
+        "d_star": 1.5892845392227173,
+        "map_max": 1.541499376296997,
+        "map_min": 0.8911994695663452
+      }
+    },
+    {
+      "name": "leather_good_005",
+      "label": 0,
+      "defect_type": "good",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.4248042689070102,
+        "w": 0.9038214179237064,
+        "d_star": 1.5764223337173462,
+        "map_max": 1.537535548210144,
+        "map_min": 0.9082266092300415
+      }
+    },
+    {
+      "name": "leather_color_016",
+      "label": 1,
+      "defect_type": "color",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.900693934362356,
+        "w": 0.901703033936072,
+        "d_star": 2.107893466949463,
+        "map_max": 2.0463671684265137,
+        "map_min": 0.940719723701477
+      }
+    },
+    {
+      "name": "leather_glue_004",
+      "label": 1,
+      "defect_type": "glue",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.8156393371529602,
+        "w": 0.9196620909707094,
+        "d_star": 1.9742461442947388,
+        "map_max": 1.9353108406066895,
+        "map_min": 0.9236776232719421
+      }
+    },
+    {
+      "name": "leather_color_004",
+      "label": 1,
+      "defect_type": "color",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.815638391241232,
+        "w": 0.9056290234253923,
+        "d_star": 2.0048367977142334,
+        "map_max": 1.9162927865982056,
+        "map_min": 0.9466606974601746
+      }
+    },
+    {
+      "name": "leather_good_004",
+      "label": 0,
+      "defect_type": "good",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.2373426988267617,
+        "w": 0.900223075407013,
+        "d_star": 1.3744845390319824,
+        "map_max": 1.3119747638702393,
+        "map_min": 0.9431051015853882
+      }
+    },
+    {
+      "name": "leather_good_018",
+      "label": 0,
+      "defect_type": "good",
+      "file": "018.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.2364582813589633,
+        "w": 0.9008606705898521,
+        "d_star": 1.3725299835205078,
+        "map_max": 1.3425248861312866,
+        "map_min": 0.8947603106498718
+      }
+    }
+  ]
+}

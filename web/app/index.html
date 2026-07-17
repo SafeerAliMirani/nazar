@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nazar - defect inspection trained on good parts only</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-id">
+    <span class="mark">NAZAR</span>
+    <span class="sub" data-copy="draft">defect inspection trained on good parts only</span>
+  </div>
+  <!-- every cell below is filled from metrics.json at load -->
+  <div class="bar-stats" id="statusBar"></div>
+</header>
+
+<div id="loadError" class="error hidden"></div>
+
+<main>
+
+<!-- 0. the plain language intro, before any number. every string in it is printed exactly as
+     data/intro.json has it, headings included: those are the file's own key names. Someone
+     who has never met AUROC should get through this block and know what the page is. -->
+<section class="intro hidden" id="panel-intro" data-copy="draft"></section>
+
+<!-- 1. live inspection. the hero. the WGSL kernel runs here, on the visitor's GPU.
+     every figure in this panel is measured at runtime or read from the set named in
+     queries/manifest.json. the category buttons and their sizes are built at load. -->
+<section class="panel hero" id="panel-live">
+  <div class="panel-head">
+    <h2>Live inspection</h2>
+    <div class="panel-controls">
+      <span class="stat" id="liveAdapter"></span>
+      <span class="pill" id="liveVerdict"></span>
+    </div>
+  </div>
+
+  <p class="lede" data-copy="draft">
+    Pick a part. The nearest neighbour search that scores it runs on your GPU, not on a server.
+  </p>
+
+  <!-- category switcher. filled from queries/manifest.json, sizes from the HEAD response. -->
+  <div class="live-pick">
+    <div class="set-btns" id="setBtns"></div>
+    <span class="stat" id="setStat"></span>
+  </div>
+  <p class="hint" id="setCost" data-copy="draft"></p>
+  <p class="note warn-note hidden" id="setNote" data-copy="draft"></p>
+
+  <!-- states: loading -> body, or deferred, or fallback. one of these is visible at a time. -->
+  <div class="live-load" id="liveLoad">
+    <div class="load-row"><span id="loadLabel">starting</span><span id="loadPct"></span></div>
+    <div class="load-track"><i id="loadBar"></i></div>
+    <p class="hint" id="loadNote"></p>
+  </div>
+
+  <!-- narrow screens and data saver land here instead of pulling the bank down -->
+  <div class="live-defer hidden" id="liveDefer">
+    <p class="note" id="deferNote" data-copy="draft"></p>
+    <div class="strip" id="deferStrip"></div>
+    <button type="button" id="deferGo" data-copy="draft">Download the bank and run it here anyway</button>
+  </div>
+
+  <div class="empty hidden" id="liveFallback"></div>
+
+  <div class="live-body hidden" id="liveBody">
+    <div class="live-strip" id="liveStrip"></div>
+
+    <div class="split">
+      <div class="live-stage">
+        <div class="stage-wrap">
+          <canvas id="liveCanvas" width="224" height="224"></canvas>
+          <div class="stage-scan hidden" id="stageScan"></div>
+          <div class="stage-tag" id="stageTag"></div>
+        </div>
+        <div class="stage-ctl">
+          <div class="seg-btns" id="viewBtns">
+            <button type="button" data-view="overlay" class="on">heatmap</button>
+            <button type="button" data-view="part">part</button>
+            <button type="button" data-view="truth">ground truth</button>
+          </div>
+          <span class="stat" id="stageScale"></span>
+        </div>
+      </div>
+
+      <div class="live-side">
+        <div class="readouts" id="liveReadouts"></div>
+        <h3>This GPU against the python reference</h3>
+        <div class="tbl-wrap"><table class="tbl" id="tblParity"></table></div>
+        <p class="hint" id="parityTol"></p>
+        <p class="note" data-copy="draft">
+          The patch features were computed offline by the backbone. The nearest neighbour search over
+          the bank and the eq.7 reweighting run in WGSL on your GPU when you pick a part. The patch
+          grid is upsampled to the image and blurred in JavaScript, not on the GPU. The backbone does
+          not run in your browser.
+        </p>
+        <p class="note" data-copy="draft">
+          Each part ships with the score the python pipeline computed for it. The table above is this
+          page checking its own GPU result against that, on your machine, now.
+        </p>
+        <p class="note warn-note hidden" id="liveScope"></p>
+      </div>
+    </div>
+    <p class="src" id="srcLive"></p>
+  </div>
+</section>
+
+<!-- 1. threshold explorer -->
+<section class="panel" id="panel-threshold">
+  <div class="panel-head">
+    <h2>Operating point</h2>
+    <div class="panel-controls">
+      <label class="seg">
+        <span>score</span>
+        <select id="scoreKey">
+          <option value="score_eq7">score_eq7 (w * d_star)</option>
+          <option value="d_star">d_star (plain)</option>
+        </select>
+      </label>
+      <span class="stat" id="aurocReadout"></span>
+    </div>
+  </div>
+
+  <p class="lede" data-copy="draft">
+    Parts scoring above the threshold get pulled off the line. Everything below it ships.
+  </p>
+
+  <div class="split">
+    <div class="col-main">
+      <canvas id="histCanvas" class="chart" height="260"></canvas>
+      <p class="hint">Drag the line. Click anywhere on the plot to move it.</p>
+
+      <canvas id="costCanvas" class="chart" height="180"></canvas>
+      <p class="hint">Expected cost per part against threshold. Marker is the minimum at the costs set on the right.</p>
+    </div>
+
+    <div class="col-side">
+      <div class="readouts" id="rateReadouts"></div>
+
+      <div class="controls">
+        <!-- arbitrary starting positions. the operator sets these, they are not measurements. -->
+        <label class="ctl">
+          <span>Line defect rate <em>%</em></span>
+          <input type="number" id="defectRate" value="2" min="0.01" max="100" step="0.01">
+        </label>
+        <label class="ctl">
+          <span>Cost of an escape</span>
+          <input type="range" id="costEscape" value="500" min="1" max="2000" step="1">
+          <output id="costEscapeOut"></output>
+        </label>
+        <label class="ctl">
+          <span>Cost of a false reject</span>
+          <input type="range" id="costFalse" value="20" min="1" max="2000" step="1">
+          <output id="costFalseOut"></output>
+        </label>
+        <button id="snapMin" type="button">Snap to minimum</button>
+      </div>
+
+      <p class="note" data-copy="draft">
+        Only the ratio of the two costs affects where the minimum sits, so the units do not matter.
+        The defect rate is a setting because the test set here is not a production mix.
+      </p>
+    </div>
+  </div>
+
+  <!-- mandated, verbatim from the brief. do not soften. -->
+  <p class="callout">
+    With only good parts you can calibrate the false-reject rate; the escape rate you only learn
+    once defects appear.
+  </p>
+  <p class="note" data-copy="draft">
+    The minimum marked above is computed on labelled test defects, which a line does not have until
+    defects show up. Until then the threshold can only be set by how often you are willing to stop
+    the line. No held-out calibration split has been exported, so this page has no calibrated default
+    threshold to show.
+  </p>
+
+  <p class="src" id="srcThreshold"></p>
+</section>
+
+<!-- 2. few-shot curve -->
+<section class="panel" id="panel-curve">
+  <div class="panel-head">
+    <h2>Good parts needed</h2>
+    <div class="panel-controls"><span class="stat" id="curveStatus"></span></div>
+  </div>
+  <p class="lede" data-copy="draft">
+    Image AUROC against the number of good parts in the bank.
+  </p>
+  <canvas id="curveCanvas" class="chart" height="280"></canvas>
+  <div id="curveEmpty" class="empty hidden"></div>
+  <div id="curveLegend" class="legend"></div>
+  <p class="src" id="srcCurve"></p>
+</section>
+
+<!-- 3. bank size. the third setting an operator has to pick, after the threshold and the
+     number of good parts. every figure comes out of compression.json at load. -->
+<section class="panel" id="panel-compression">
+  <div class="panel-head">
+    <h2>Bank size</h2>
+    <div class="panel-controls"><span class="stat" id="compStatus"></span></div>
+  </div>
+
+  <p class="lede" data-copy="draft">
+    The memory bank is what the line has to hold in RAM and search once per part. The coreset
+    percentage sets how big it is. This is what shrinking it costs.
+  </p>
+
+  <div class="readouts" id="compSummary"></div>
+
+  <div class="split">
+    <div class="col-main">
+      <canvas id="compCanvas" class="chart" height="300"></canvas>
+      <div id="compEmpty" class="empty hidden"></div>
+      <div id="compLegend" class="legend"></div>
+    </div>
+    <div class="col-side">
+      <div class="tbl-wrap"><table class="tbl" id="tblComp"></table></div>
+      <p class="note" data-copy="draft">
+        Bank megabytes are the float16 bytes on the wire. The neighbour table is a separate
+        file and is not counted here.
+      </p>
+    </div>
+  </div>
+
+  <p class="callout" id="compFind" data-copy="draft"></p>
+  <p class="note" id="compShots" data-copy="draft"></p>
+  <p class="note" data-copy="draft">
+    A smaller bank is also a faster one, because the kNN compares every patch against every
+    row. The dispatch time in the live panel at the top of this page is measured against the
+    shipped bank on your own GPU.
+  </p>
+  <p class="src" id="srcCompression"></p>
+</section>
+
+<!-- 3. where it breaks. mandatory. do not soften. -->
+<section class="panel warn" id="panel-breaks">
+  <div class="panel-head"><h2>Where it breaks</h2></div>
+  <p class="lede" data-copy="draft">
+    Some defects score lower than the worst good part, so no threshold catches them. The tables below
+    count them by type.
+  </p>
+
+  <div class="readouts" id="breakSummary"></div>
+
+  <div class="split">
+    <div class="col-half">
+      <h3>Missed under the worst good, by defect type</h3>
+      <div class="tbl-wrap"><table class="tbl" id="tblByType"></table></div>
+    </div>
+    <div class="col-half">
+      <h3>Worst false negatives</h3>
+      <div class="tbl-wrap"><table class="tbl" id="tblWorstFN"></table></div>
+    </div>
+  </div>
+
+  <h3>Near the line, at the current threshold</h3>
+  <div class="tbl-wrap"><table class="tbl" id="tblNear"></table></div>
+  <p class="hint">Follows the threshold in the panel above.</p>
+
+  <p class="src" id="srcBreaks"></p>
+</section>
+
+<!-- top scoring cases. these are the wins, labelled as such so the panel above stays the failure story. -->
+<section class="panel" id="panel-maps">
+  <div class="panel-head">
+    <h2>Heatmaps, top-scoring test cases</h2>
+    <div class="panel-controls"><span class="stat" data-copy="draft">original | overlay | ground truth</span></div>
+  </div>
+  <p class="lede" data-copy="draft">
+    These are the highest scoring cases in the run, so they are the easy ones rather than a typical
+    sample. Rendered offline by the pipeline. The panel at the top of the page runs live instead.
+  </p>
+  <div class="strip" id="mapStrip"></div>
+  <p class="note warn-note" id="mapsScope" data-copy="draft"></p>
+  <p class="src" id="srcMaps"></p>
+</section>
+
+<!-- this implementation against the paper it reimplements. read from categories.json, which
+     is the first file in this repo to carry published figures as data. -->
+<section class="panel" id="panel-published">
+  <div class="panel-head">
+    <h2>This implementation against the published figures</h2>
+  </div>
+
+  <p class="lede" data-copy="draft">
+    PatchCore is Roth et al. This page is a reimplementation of it, so the question is whether it
+    reproduces what the paper reported on the same categories.
+  </p>
+
+  <div class="readouts" id="pubSummary"></div>
+  <div class="tbl-wrap"><table class="tbl" id="tblPublished"></table></div>
+  <div id="pubEmpty" class="empty hidden"></div>
+
+  <p class="note" id="pubNote" data-copy="draft"></p>
+  <p class="note" data-copy="draft">
+    Both columns of a gap are image AUROC on the MVTec AD test split for that category. The paper
+    reports one figure per category and this repo carries it as data, so the gap is arithmetic on
+    two files rather than a claim.
+  </p>
+  <p class="src" id="srcPublished"></p>
+</section>
+
+<!-- provenance table -->
+<section class="panel" id="panel-runs">
+  <div class="panel-head"><h2>Runs</h2></div>
+  <p class="lede" data-copy="draft">
+    Every run behind this page. The backbone and the coreset are on each row because banks from
+    different backbones have the same shape and a mixup would not show up in the file size.
+  </p>
+  <div class="tbl-wrap"><table class="tbl wide" id="tblRuns"></table></div>
+  <p class="note" data-copy="draft">
+    These are the runs exported to this page with per-image scores. The eight banks the live panel
+    downloads are a separate export and are listed in the two panels above.
+  </p>
+  <p class="src" id="srcRuns"></p>
+</section>
+
+<!-- 4. what a real line would need. the provenance callout is mandatory and must survive being read alone. -->
+<section class="panel" id="panel-translate">
+  <div class="panel-head"><h2>What would change on a real production line</h2></div>
+
+  <p class="callout strong">
+    Every number on this page comes from MVTec AD, a public benchmark of screws, leather and other
+    lab-photographed parts. No data from any manufacturer was used anywhere in this project.
+  </p>
+
+  <div class="grid4" data-copy="draft">
+    <div class="card">
+      <h3>Lighting</h3>
+      <p>MVTec images come from a fixed rig, one geometry, even light. A line needs its own rig, and
+        it has to be built and held fixed before any of these numbers transfer.</p>
+    </div>
+    <div class="card">
+      <h3>Part shape</h3>
+      <p>Patch features assume a repeatable field of view. If the part is curved, or its geometry
+        varies, either the pose gets fixtured or the model sees a different distribution per pose.</p>
+    </div>
+    <div class="card">
+      <h3>Cycle time</h3>
+      <p>The budget is the line beat, not a benchmark. The kNN is the cost and it grows with the
+        bank, so the bank gets compressed until it fits the beat.</p>
+    </div>
+    <div class="card">
+      <h3>Good parts to collect</h3>
+      <p>The curve above answers this for MVTec. It has to be measured again on the real surface
+        before it means anything there.</p>
+    </div>
+  </div>
+  <p class="src">Method: Roth et al., PatchCore. Data: Bergmann et al., MVTec AD.</p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>
+    Data: MVTec AD (Bergmann et al.), licensed CC BY-NC-SA 4.0. The heatmaps on this page are derived
+    from MVTec AD images and inherit CC BY-NC-SA 4.0. The memory bank is derived from MVTec AD images
+    and inherits the same licence. Code is MIT. Method: PatchCore, Roth et al.
+  </p>
+  <p id="footSidecar"></p>
+</footer>
+
+<script src="app.js"></script>
+<script src="live.js"></script>
+</body>
+</html>

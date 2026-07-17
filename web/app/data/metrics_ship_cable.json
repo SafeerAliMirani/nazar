@@ -1,0 +1,55 @@
+{
+  "category": "cable",
+  "seed": 0,
+  "coreset_pct": 0.02,
+  "image_auroc_plain": 0.998688155922039,
+  "image_auroc_eq7": 0.9981259370314842,
+  "image_auroc": 0.998688155922039,
+  "pixel_auroc": 0.985448517378722,
+  "n_train": 224,
+  "n_test": 150,
+  "n_test_good": 58,
+  "n_test_defect": 92,
+  "test_counts": {
+    "bent_wire": 13,
+    "cable_swap": 12,
+    "combined": 11,
+    "cut_inner_insulation": 14,
+    "cut_outer_insulation": 10,
+    "good": 58,
+    "missing_cable": 12,
+    "missing_wire": 10,
+    "poke_insulation": 10
+  },
+  "bank_size": 3512,
+  "w_p10": 0.9091206490884297,
+  "w_median": 0.9178822246246372,
+  "w_std": 0.00617164657986782,
+  "ablate_bank": "none",
+  "permute_labels": false,
+  "config": {
+    "data_root": "D:\\data\\mvtec_ad",
+    "device": "cuda",
+    "backbone": "wide_resnet50_2 IMAGENET1K_V1",
+    "balance_blocks": false,
+    "weights_sha256": "95faca4d11227dddf8633dbb5ff6c8a9003c1aa5b8945c73834b8007b10950b8",
+    "taps": [
+      "layer2",
+      "layer3"
+    ],
+    "resize": 256,
+    "crop": 224,
+    "patch_pool": "avg 3x3 stride 1 pad 1",
+    "grid": [
+      28,
+      28
+    ],
+    "feature_dim": 1536,
+    "projection_dim": 298,
+    "blur_sigma": 4.0,
+    "b_nearest": 9,
+    "batch": 16,
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  }
+}

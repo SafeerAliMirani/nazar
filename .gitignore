@@ -1,0 +1,30 @@
+# The banks and the per image features are derived. They rebuild from the
+# dataset with pipeline/repro.py --export-dir, they are hundreds of megabytes,
+# and they are MVTec derived so they carry CC BY-NC-SA. None of that belongs in
+# a git history.
+artifacts/*.bin
+artifacts/queries/*.bin
+artifacts/queries/*.png
+artifacts/_stale/
+artifacts/compression_raw.json
+
+# Run outputs. Every one of these is reproducible from a single command and the
+# heatmaps are MVTec derived images.
+pipeline/runs/
+
+# The deploy folder. Built by pipeline/build_dist.py, never edited by hand.
+dist/
+
+# MVTec derived images that the page ships. Kept out of git for the licence,
+# rebuilt by pipeline/publish_to_app.py.
+web/app/data/heatmaps/
+
+__pycache__/
+*.pyc
+.DS_Store
+
+# Internal planning. These name the company, the person, and the strategy, and
+# this repository is public. They stay on disk and out of git.
+PROJECT_BRIEF.md
+REVIEW_V2.md
+MIGRATION_HANDOVER.md
