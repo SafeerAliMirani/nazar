@@ -129,12 +129,17 @@ def build_categories(runs_dir, out_path, raw_path, prefix="ship_"):
         if not d.is_dir() or not d.name.startswith(prefix):
             continue
         m = json.loads((d / "metrics.json").read_text())
+        # the controls sit in runs/ under the same prefix, ship_leather_ablated
+        # among them. they are evidence, not categories, so they are skipped
+        # rather than asserted on: an assert here kills the whole table and this
+        # file then quietly goes stale.
+        if m["ablate_bank"] != "none" or m["permute_labels"]:
+            print(f"skipping {d.name}, it is a control run and not a category")
+            continue
         cat = m["category"]
         pct = float(m["coreset_pct"])
         rows = int(m["bank_size"])
         counts = m["test_counts"]
-        assert m["ablate_bank"] == "none", f"{d.name} is an ablation, not a real run"
-        assert not m["permute_labels"], f"{d.name} has permuted labels"
         recs.append({
             "category": cat,
             "backbone": m["config"]["backbone"].split()[0],
@@ -166,14 +171,29 @@ def build_categories(runs_dir, out_path, raw_path, prefix="ship_"):
         c = r["paper_comparison"]
         gap = c["gap_points"] if c else None
         flag = " <-- gap > 1.5" if gap is not None and abs(gap) > 1.5 else ""
+        # a category with no 10 percent run has nothing to compare against, and
+        # printing a dash is the honest answer. it used to crash here, which
+        # left categories.json written and the summary missing.
+        if c is None:
+            print(f"{r['category']:<11} {r['image_auroc_plain']*100:8.2f} "
+                  f"{r['bank_bytes_f16']/1e6:6.1f} | {'-':>8} {'-':>7} {'-':>7} | "
+                  f"{r['pixel_auroc']*100:8.2f}  no 10% run, not comparable")
+            continue
         print(f"{r['category']:<11} {r['image_auroc_plain']*100:8.2f} "
               f"{r['bank_bytes_f16']/1e6:6.1f} | {c['image_auroc_plain']*100:8.2f} "
               f"{c['published_image_auroc']:7.1f} {gap:+7.2f} | "
               f"{r['pixel_auroc']*100:8.2f}{flag}")
     n = len(recs)
-    print(f"\nmean shipped@2% {sum(r['image_auroc_plain'] for r in recs)/n*100:.3f}   "
-          f"mean ours@10% {sum(r['paper_comparison']['image_auroc_plain'] for r in recs)/n*100:.3f}   "
-          f"mean published@10% {sum(r['paper_comparison']['published_image_auroc'] for r in recs)/n:.3f}")
+    # the means are over the categories that actually have a published
+    # counterpart, and the count is printed so it cannot be read as all of them
+    cmp_recs = [r for r in recs if r["paper_comparison"]]
+    print(f"\nmean shipped@2% {sum(r['image_auroc_plain'] for r in recs)/n*100:.3f} "
+          f"over {n} categories")
+    if cmp_recs:
+        k = len(cmp_recs)
+        print(f"mean ours@10% {sum(r['paper_comparison']['image_auroc_plain'] for r in cmp_recs)/k*100:.3f}   "
+              f"mean published@10% {sum(r['paper_comparison']['published_image_auroc'] for r in cmp_recs)/k:.3f}   "
+              f"over the {k} with a published counterpart")
     print(f"total shipped payload all {n} banks: "
           f"{sum(r['bank_bytes_f16'] for r in recs)/1e6:.1f} MB f16")
 

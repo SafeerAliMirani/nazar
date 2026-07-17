@@ -1,0 +1,220 @@
+{
+  "category": "carpet",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_carpet_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "carpet_color_008",
+      "label": 1,
+      "defect_type": "color",
+      "file": "008.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.1297499930261994,
+        "w": 0.9120787087825166,
+        "d_star": 3.4314472675323486,
+        "map_max": 3.4094932079315186,
+        "map_min": 0.9935691952705383
+      }
+    },
+    {
+      "name": "carpet_hole_007",
+      "label": 1,
+      "defect_type": "hole",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.1224959251031765,
+        "w": 0.9080228694105732,
+        "d_star": 3.4387855529785156,
+        "map_max": 3.3226423263549805,
+        "map_min": 0.989694356918335
+      }
+    },
+    {
+      "name": "carpet_thread_008",
+      "label": 1,
+      "defect_type": "thread",
+      "file": "008.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.083820230708595,
+        "w": 0.9103061164857253,
+        "d_star": 3.387673854827881,
+        "map_max": 3.262220621109009,
+        "map_min": 1.0490498542785645
+      }
+    },
+    {
+      "name": "carpet_cut_003",
+      "label": 1,
+      "defect_type": "cut",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.99212207880745,
+        "w": 0.9078945254064373,
+        "d_star": 3.2956714630126953,
+        "map_max": 3.200901508331299,
+        "map_min": 1.077990174293518
+      }
+    },
+    {
+      "name": "carpet_good_014",
+      "label": 0,
+      "defect_type": "good",
+      "file": "014.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.7608665858834465,
+        "w": 0.9092340781158141,
+        "d_star": 1.9366482496261597,
+        "map_max": 1.8851686716079712,
+        "map_min": 1.0314801931381226
+      }
+    },
+    {
+      "name": "carpet_good_006",
+      "label": 0,
+      "defect_type": "good",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.7174840291693347,
+        "w": 0.9029361809059905,
+        "d_star": 1.9021100997924805,
+        "map_max": 1.846666932106018,
+        "map_min": 0.9432694315910339
+      }
+    },
+    {
+      "name": "carpet_thread_009",
+      "label": 1,
+      "defect_type": "thread",
+      "file": "009.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6349246290843258,
+        "w": 0.9097335510367349,
+        "d_star": 1.7971466779708862,
+        "map_max": 1.769924521446228,
+        "map_min": 1.0946671962738037
+      }
+    },
+    {
+      "name": "carpet_thread_018",
+      "label": 1,
+      "defect_type": "thread",
+      "file": "018.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.5265552367684487,
+        "w": 0.904023676592546,
+        "d_star": 1.688623070716858,
+        "map_max": 1.6468732357025146,
+        "map_min": 0.9614823460578918
+      }
+    },
+    {
+      "name": "carpet_metal_contamination_000",
+      "label": 1,
+      "defect_type": "metal_contamination",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.4536802403692344,
+        "w": 0.9160201748307795,
+        "d_star": 1.5869522094726562,
+        "map_max": 1.539300560951233,
+        "map_min": 1.0780597925186157
+      }
+    },
+    {
+      "name": "carpet_good_027",
+      "label": 0,
+      "defect_type": "good",
+      "file": "027.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.3054473753689466,
+        "w": 0.9055365561650554,
+        "d_star": 1.4416285753250122,
+        "map_max": 1.4232577085494995,
+        "map_min": 0.9724534153938293
+      }
+    },
+    {
+      "name": "carpet_good_021",
+      "label": 0,
+      "defect_type": "good",
+      "file": "021.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.2930416920075065,
+        "w": 0.9081991796605308,
+        "d_star": 1.423742413520813,
+        "map_max": 1.3910937309265137,
+        "map_min": 1.0144845247268677
+      }
+    }
+  ]
+}

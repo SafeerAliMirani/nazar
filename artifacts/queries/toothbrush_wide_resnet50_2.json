@@ -1,0 +1,220 @@
+{
+  "category": "toothbrush",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_toothbrush_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "toothbrush_defective_023",
+      "label": 1,
+      "defect_type": "defective",
+      "file": "023.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.3767565522895806,
+        "w": 0.9033945050145699,
+        "d_star": 3.737853765487671,
+        "map_max": 3.6620497703552246,
+        "map_min": 0.6354258060455322
+      }
+    },
+    {
+      "name": "toothbrush_defective_017",
+      "label": 1,
+      "defect_type": "defective",
+      "file": "017.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.2724319570803697,
+        "w": 0.9071245419830746,
+        "d_star": 3.607478141784668,
+        "map_max": 3.5383589267730713,
+        "map_min": 0.6363076567649841
+      }
+    },
+    {
+      "name": "toothbrush_defective_022",
+      "label": 1,
+      "defect_type": "defective",
+      "file": "022.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.242333900528008,
+        "w": 0.9063301294762806,
+        "d_star": 3.5774314403533936,
+        "map_max": 3.4912257194519043,
+        "map_min": 0.6372517347335815
+      }
+    },
+    {
+      "name": "toothbrush_defective_010",
+      "label": 1,
+      "defect_type": "defective",
+      "file": "010.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.1826196031245235,
+        "w": 0.912033547345441,
+        "d_star": 3.489586114883423,
+        "map_max": 3.4334278106689453,
+        "map_min": 0.41463103890419006
+      }
+    },
+    {
+      "name": "toothbrush_good_006",
+      "label": 0,
+      "defect_type": "good",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.7493582491694795,
+        "w": 0.9215357901739533,
+        "d_star": 1.8983074426651,
+        "map_max": 1.7980101108551025,
+        "map_min": 0.6225322484970093
+      }
+    },
+    {
+      "name": "toothbrush_good_007",
+      "label": 0,
+      "defect_type": "good",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6775153239517717,
+        "w": 0.9338600999919451,
+        "d_star": 1.7963240146636963,
+        "map_max": 1.7086477279663086,
+        "map_min": 0.6183289289474487
+      }
+    },
+    {
+      "name": "toothbrush_defective_013",
+      "label": 1,
+      "defect_type": "defective",
+      "file": "013.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.8755269544038697,
+        "w": 0.90497746704653,
+        "d_star": 2.0724570751190186,
+        "map_max": 1.9799340963363647,
+        "map_min": 0.5179269313812256
+      }
+    },
+    {
+      "name": "toothbrush_defective_003",
+      "label": 1,
+      "defect_type": "defective",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.8316104566848712,
+        "w": 0.9103126040057458,
+        "d_star": 2.0120675563812256,
+        "map_max": 1.9192947149276733,
+        "map_min": 0.6851750016212463
+      }
+    },
+    {
+      "name": "toothbrush_defective_018",
+      "label": 1,
+      "defect_type": "defective",
+      "file": "018.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.7503782569380937,
+        "w": 0.9180510028200679,
+        "d_star": 1.9066241979599,
+        "map_max": 1.813043475151062,
+        "map_min": 0.6048621535301208
+      }
+    },
+    {
+      "name": "toothbrush_good_008",
+      "label": 0,
+      "defect_type": "good",
+      "file": "008.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.5605470892793356,
+        "w": 0.9104943179735338,
+        "d_star": 1.7139558792114258,
+        "map_max": 1.640055537223816,
+        "map_min": 0.5754329562187195
+      }
+    },
+    {
+      "name": "toothbrush_good_000",
+      "label": 0,
+      "defect_type": "good",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.525329750570941,
+        "w": 0.9172342733765434,
+        "d_star": 1.6629663705825806,
+        "map_max": 1.6001590490341187,
+        "map_min": 0.5861086249351501
+      }
+    }
+  ]
+}

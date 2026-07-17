@@ -1,0 +1,52 @@
+{
+  "category": "wood",
+  "seed": 0,
+  "coreset_pct": 0.02,
+  "image_auroc_plain": 0.9912280701754386,
+  "image_auroc_eq7": 0.9894736842105264,
+  "image_auroc": 0.9912280701754386,
+  "pixel_auroc": 0.9397216411312481,
+  "n_train": 247,
+  "n_test": 79,
+  "n_test_good": 19,
+  "n_test_defect": 60,
+  "test_counts": {
+    "color": 8,
+    "combined": 11,
+    "good": 19,
+    "hole": 10,
+    "liquid": 10,
+    "scratch": 21
+  },
+  "bank_size": 3873,
+  "w_p10": 0.9037686114877146,
+  "w_median": 0.9106266798556508,
+  "w_std": 0.004966862963625419,
+  "ablate_bank": "none",
+  "permute_labels": false,
+  "config": {
+    "data_root": "D:\\data\\mvtec_ad",
+    "device": "cuda",
+    "backbone": "wide_resnet50_2 IMAGENET1K_V1",
+    "balance_blocks": false,
+    "weights_sha256": "95faca4d11227dddf8633dbb5ff6c8a9003c1aa5b8945c73834b8007b10950b8",
+    "taps": [
+      "layer2",
+      "layer3"
+    ],
+    "resize": 256,
+    "crop": 224,
+    "patch_pool": "avg 3x3 stride 1 pad 1",
+    "grid": [
+      28,
+      28
+    ],
+    "feature_dim": 1536,
+    "projection_dim": 300,
+    "blur_sigma": 4.0,
+    "b_nearest": 9,
+    "batch": 16,
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  }
+}

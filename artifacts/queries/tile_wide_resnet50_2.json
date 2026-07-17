@@ -1,0 +1,220 @@
+{
+  "category": "tile",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_tile_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "tile_crack_010",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "010.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.5821261150604933,
+        "w": 0.90400684075907,
+        "d_star": 3.962498903274536,
+        "map_max": 3.864468574523926,
+        "map_min": 1.3919693231582642
+      }
+    },
+    {
+      "name": "tile_crack_006",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.494766448901195,
+        "w": 0.9085321279472184,
+        "d_star": 3.8466074466705322,
+        "map_max": 3.7688796520233154,
+        "map_min": 1.3283926248550415
+      }
+    },
+    {
+      "name": "tile_crack_002",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "002.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.3243665590016174,
+        "w": 0.907905270378814,
+        "d_star": 3.66157865524292,
+        "map_max": 3.5464155673980713,
+        "map_min": 1.3556188344955444
+      }
+    },
+    {
+      "name": "tile_crack_001",
+      "label": 1,
+      "defect_type": "crack",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.246592913716805,
+        "w": 0.9030373728415934,
+        "d_star": 3.595192193984985,
+        "map_max": 3.522120475769043,
+        "map_min": 1.3194527626037598
+      }
+    },
+    {
+      "name": "tile_good_017",
+      "label": 0,
+      "defect_type": "good",
+      "file": "017.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.939693026110126,
+        "w": 0.909661396261401,
+        "d_star": 2.13232421875,
+        "map_max": 2.098722219467163,
+        "map_min": 1.391748070716858
+      }
+    },
+    {
+      "name": "tile_good_025",
+      "label": 0,
+      "defect_type": "good",
+      "file": "025.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.758525820065156,
+        "w": 0.9145435474630699,
+        "d_star": 1.9228453636169434,
+        "map_max": 1.8904832601547241,
+        "map_min": 1.3360527753829956
+      }
+    },
+    {
+      "name": "tile_gray_stroke_003",
+      "label": 1,
+      "defect_type": "gray_stroke",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9897024975635236,
+        "w": 0.9064789797913277,
+        "d_star": 2.194979190826416,
+        "map_max": 2.172451972961426,
+        "map_min": 1.3328484296798706
+      }
+    },
+    {
+      "name": "tile_gray_stroke_002",
+      "label": 1,
+      "defect_type": "gray_stroke",
+      "file": "002.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6564933939257567,
+        "w": 0.9058332858806671,
+        "d_star": 1.8286956548690794,
+        "map_max": 1.7925211191177368,
+        "map_min": 1.3172863721847534
+      }
+    },
+    {
+      "name": "tile_gray_stroke_012",
+      "label": 1,
+      "defect_type": "gray_stroke",
+      "file": "012.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6105344282758745,
+        "w": 0.9140426660152581,
+        "d_star": 1.7619904279708862,
+        "map_max": 1.7205463647842407,
+        "map_min": 1.1543787717819214
+      }
+    },
+    {
+      "name": "tile_good_002",
+      "label": 0,
+      "defect_type": "good",
+      "file": "002.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.572995669000742,
+        "w": 0.9115965967053095,
+        "d_star": 1.725539207458496,
+        "map_max": 1.6970219612121582,
+        "map_min": 1.297755241394043
+      }
+    },
+    {
+      "name": "tile_good_021",
+      "label": 0,
+      "defect_type": "good",
+      "file": "021.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.5670587431905183,
+        "w": 0.9147824087647705,
+        "d_star": 1.7130398750305176,
+        "map_max": 1.6891179084777832,
+        "map_min": 1.3119124174118042
+      }
+    }
+  ]
+}

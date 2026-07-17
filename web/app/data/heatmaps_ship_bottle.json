@@ -1,0 +1,62 @@
+[
+  {
+    "png": "heatmaps/ship_bottle_00_contamination_013_score_3.7420.png",
+    "defect_type": "contamination",
+    "file": "013.png",
+    "src": "00_contamination_013_score_3.7420.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_01_contamination_007_score_3.7388.png",
+    "defect_type": "contamination",
+    "file": "007.png",
+    "src": "01_contamination_007_score_3.7388.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_02_broken_small_018_score_3.5592.png",
+    "defect_type": "broken_small",
+    "file": "018.png",
+    "src": "02_broken_small_018_score_3.5592.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_03_broken_small_017_score_3.4254.png",
+    "defect_type": "broken_small",
+    "file": "017.png",
+    "src": "03_broken_small_017_score_3.4254.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_04_broken_small_004_score_3.4085.png",
+    "defect_type": "broken_small",
+    "file": "004.png",
+    "src": "04_broken_small_004_score_3.4085.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_05_broken_large_004_score_3.4047.png",
+    "defect_type": "broken_large",
+    "file": "004.png",
+    "src": "05_broken_large_004_score_3.4047.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_06_contamination_018_score_3.3690.png",
+    "defect_type": "contamination",
+    "file": "018.png",
+    "src": "06_contamination_018_score_3.3690.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_07_broken_large_017_score_3.3557.png",
+    "defect_type": "broken_large",
+    "file": "017.png",
+    "src": "07_broken_large_017_score_3.3557.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_08_good_001_score_1.5264.png",
+    "defect_type": "good",
+    "file": "001.png",
+    "src": "08_good_001_score_1.5264.png"
+  },
+  {
+    "png": "heatmaps/ship_bottle_09_good_019_score_1.4796.png",
+    "defect_type": "good",
+    "file": "019.png",
+    "src": "09_good_019_score_1.4796.png"
+  }
+]

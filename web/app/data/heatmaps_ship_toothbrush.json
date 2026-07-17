@@ -1,0 +1,62 @@
+[
+  {
+    "png": "heatmaps/ship_toothbrush_00_defective_023_score_3.3768.png",
+    "defect_type": "defective",
+    "file": "023.png",
+    "src": "00_defective_023_score_3.3768.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_01_defective_017_score_3.2724.png",
+    "defect_type": "defective",
+    "file": "017.png",
+    "src": "01_defective_017_score_3.2724.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_02_defective_022_score_3.2423.png",
+    "defect_type": "defective",
+    "file": "022.png",
+    "src": "02_defective_022_score_3.2423.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_03_defective_010_score_3.1826.png",
+    "defect_type": "defective",
+    "file": "010.png",
+    "src": "03_defective_010_score_3.1826.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_04_defective_016_score_3.1811.png",
+    "defect_type": "defective",
+    "file": "016.png",
+    "src": "04_defective_016_score_3.1811.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_05_defective_000_score_3.1294.png",
+    "defect_type": "defective",
+    "file": "000.png",
+    "src": "05_defective_000_score_3.1294.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_06_defective_005_score_3.1193.png",
+    "defect_type": "defective",
+    "file": "005.png",
+    "src": "06_defective_005_score_3.1193.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_07_defective_025_score_3.1164.png",
+    "defect_type": "defective",
+    "file": "025.png",
+    "src": "07_defective_025_score_3.1164.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_08_good_006_score_1.7494.png",
+    "defect_type": "good",
+    "file": "006.png",
+    "src": "08_good_006_score_1.7494.png"
+  },
+  {
+    "png": "heatmaps/ship_toothbrush_09_good_007_score_1.6775.png",
+    "defect_type": "good",
+    "file": "007.png",
+    "src": "09_good_007_score_1.6775.png"
+  }
+]

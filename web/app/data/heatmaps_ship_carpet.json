@@ -1,0 +1,62 @@
+[
+  {
+    "png": "heatmaps/ship_carpet_00_color_008_score_3.1297.png",
+    "defect_type": "color",
+    "file": "008.png",
+    "src": "00_color_008_score_3.1297.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_01_hole_007_score_3.1225.png",
+    "defect_type": "hole",
+    "file": "007.png",
+    "src": "01_hole_007_score_3.1225.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_02_thread_008_score_3.0838.png",
+    "defect_type": "thread",
+    "file": "008.png",
+    "src": "02_thread_008_score_3.0838.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_03_cut_003_score_2.9921.png",
+    "defect_type": "cut",
+    "file": "003.png",
+    "src": "03_cut_003_score_2.9921.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_04_cut_012_score_2.9207.png",
+    "defect_type": "cut",
+    "file": "012.png",
+    "src": "04_cut_012_score_2.9207.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_05_hole_008_score_2.9025.png",
+    "defect_type": "hole",
+    "file": "008.png",
+    "src": "05_hole_008_score_2.9025.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_06_cut_015_score_2.9006.png",
+    "defect_type": "cut",
+    "file": "015.png",
+    "src": "06_cut_015_score_2.9006.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_07_color_000_score_2.8907.png",
+    "defect_type": "color",
+    "file": "000.png",
+    "src": "07_color_000_score_2.8907.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_08_good_014_score_1.7609.png",
+    "defect_type": "good",
+    "file": "014.png",
+    "src": "08_good_014_score_1.7609.png"
+  },
+  {
+    "png": "heatmaps/ship_carpet_09_good_006_score_1.7175.png",
+    "defect_type": "good",
+    "file": "006.png",
+    "src": "09_good_006_score_1.7175.png"
+  }
+]

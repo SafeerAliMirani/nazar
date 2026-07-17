@@ -1,0 +1,62 @@
+[
+  {
+    "png": "heatmaps/ship_tile_00_crack_010_score_3.5821.png",
+    "defect_type": "crack",
+    "file": "010.png",
+    "src": "00_crack_010_score_3.5821.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_01_crack_006_score_3.4948.png",
+    "defect_type": "crack",
+    "file": "006.png",
+    "src": "01_crack_006_score_3.4948.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_02_crack_002_score_3.3244.png",
+    "defect_type": "crack",
+    "file": "002.png",
+    "src": "02_crack_002_score_3.3244.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_03_crack_001_score_3.2466.png",
+    "defect_type": "crack",
+    "file": "001.png",
+    "src": "03_crack_001_score_3.2466.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_04_glue_strip_004_score_3.2044.png",
+    "defect_type": "glue_strip",
+    "file": "004.png",
+    "src": "04_glue_strip_004_score_3.2044.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_05_glue_strip_014_score_3.0698.png",
+    "defect_type": "glue_strip",
+    "file": "014.png",
+    "src": "05_glue_strip_014_score_3.0698.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_06_glue_strip_012_score_3.0498.png",
+    "defect_type": "glue_strip",
+    "file": "012.png",
+    "src": "06_glue_strip_012_score_3.0498.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_07_glue_strip_015_score_3.0354.png",
+    "defect_type": "glue_strip",
+    "file": "015.png",
+    "src": "07_glue_strip_015_score_3.0354.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_08_good_017_score_1.9397.png",
+    "defect_type": "good",
+    "file": "017.png",
+    "src": "08_good_017_score_1.9397.png"
+  },
+  {
+    "png": "heatmaps/ship_tile_09_good_025_score_1.7585.png",
+    "defect_type": "good",
+    "file": "025.png",
+    "src": "09_good_025_score_1.7585.png"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "png": "heatmaps/ship_zipper_00_combined_006_score_3.0522.png",
+    "defect_type": "combined",
+    "file": "006.png",
+    "src": "00_combined_006_score_3.0522.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_01_fabric_border_001_score_2.9683.png",
+    "defect_type": "fabric_border",
+    "file": "001.png",
+    "src": "01_fabric_border_001_score_2.9683.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_02_fabric_border_005_score_2.9121.png",
+    "defect_type": "fabric_border",
+    "file": "005.png",
+    "src": "02_fabric_border_005_score_2.9121.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_03_fabric_border_009_score_2.6742.png",
+    "defect_type": "fabric_border",
+    "file": "009.png",
+    "src": "03_fabric_border_009_score_2.6742.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_04_combined_000_score_2.6614.png",
+    "defect_type": "combined",
+    "file": "000.png",
+    "src": "04_combined_000_score_2.6614.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_05_fabric_border_016_score_2.6224.png",
+    "defect_type": "fabric_border",
+    "file": "016.png",
+    "src": "05_fabric_border_016_score_2.6224.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_06_split_teeth_004_score_2.6022.png",
+    "defect_type": "split_teeth",
+    "file": "004.png",
+    "src": "06_split_teeth_004_score_2.6022.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_07_fabric_border_000_score_2.5517.png",
+    "defect_type": "fabric_border",
+    "file": "000.png",
+    "src": "07_fabric_border_000_score_2.5517.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_08_good_022_score_1.6317.png",
+    "defect_type": "good",
+    "file": "022.png",
+    "src": "08_good_022_score_1.6317.png"
+  },
+  {
+    "png": "heatmaps/ship_zipper_09_good_002_score_1.3640.png",
+    "defect_type": "good",
+    "file": "002.png",
+    "src": "09_good_002_score_1.3640.png"
+  }
+]

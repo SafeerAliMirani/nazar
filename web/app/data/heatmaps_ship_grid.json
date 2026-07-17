@@ -1,0 +1,62 @@
+[
+  {
+    "png": "heatmaps/ship_grid_00_broken_001_score_2.9854.png",
+    "defect_type": "broken",
+    "file": "001.png",
+    "src": "00_broken_001_score_2.9854.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_01_metal_contamination_002_score_2.8838.png",
+    "defect_type": "metal_contamination",
+    "file": "002.png",
+    "src": "01_metal_contamination_002_score_2.8838.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_02_thread_005_score_2.7997.png",
+    "defect_type": "thread",
+    "file": "005.png",
+    "src": "02_thread_005_score_2.7997.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_03_thread_001_score_2.7299.png",
+    "defect_type": "thread",
+    "file": "001.png",
+    "src": "03_thread_001_score_2.7299.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_04_broken_003_score_2.6815.png",
+    "defect_type": "broken",
+    "file": "003.png",
+    "src": "04_broken_003_score_2.6815.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_05_broken_010_score_2.6427.png",
+    "defect_type": "broken",
+    "file": "010.png",
+    "src": "05_broken_010_score_2.6427.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_06_bent_009_score_2.5963.png",
+    "defect_type": "bent",
+    "file": "009.png",
+    "src": "06_bent_009_score_2.5963.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_07_bent_001_score_2.4748.png",
+    "defect_type": "bent",
+    "file": "001.png",
+    "src": "07_bent_001_score_2.4748.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_08_good_018_score_1.8160.png",
+    "defect_type": "good",
+    "file": "018.png",
+    "src": "08_good_018_score_1.8160.png"
+  },
+  {
+    "png": "heatmaps/ship_grid_09_good_005_score_1.6273.png",
+    "defect_type": "good",
+    "file": "005.png",
+    "src": "09_good_005_score_1.6273.png"
+  }
+]

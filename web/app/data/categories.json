@@ -1,5 +1,36 @@
 [
   {
+    "category": "bottle",
+    "backbone": "wide_resnet50_2",
+    "coreset_pct": 0.02,
+    "bank_rows": 3277,
+    "bank_bytes_f16": 10066944,
+    "n_train": 209,
+    "n_test_good": 20,
+    "n_test_defect": 63,
+    "defect_types": [
+      "broken_large",
+      "broken_small",
+      "contamination"
+    ],
+    "image_auroc_plain": 1.0,
+    "image_auroc_eq7": 1.0,
+    "pixel_auroc": 0.9834481757085265,
+    "published_image_auroc": null,
+    "published_pixel_auroc": null,
+    "source": null,
+    "paper_comparison": {
+      "coreset_pct": 0.1,
+      "bank_rows": 16386,
+      "image_auroc_plain": 1.0,
+      "pixel_auroc": 0.9834615414158314,
+      "published_image_auroc": 100.0,
+      "published_pixel_auroc": 98.6,
+      "gap_points": 0.0,
+      "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
+    }
+  },
+  {
     "category": "cable",
     "backbone": "wide_resnet50_2",
     "coreset_pct": 0.02,
@@ -65,6 +96,72 @@
       "published_image_auroc": 97.8,
       "published_pixel_auroc": 98.9,
       "gap_points": 0.245,
+      "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
+    }
+  },
+  {
+    "category": "carpet",
+    "backbone": "wide_resnet50_2",
+    "coreset_pct": 0.02,
+    "bank_rows": 4390,
+    "bank_bytes_f16": 13486080,
+    "n_train": 280,
+    "n_test_good": 28,
+    "n_test_defect": 89,
+    "defect_types": [
+      "color",
+      "cut",
+      "hole",
+      "metal_contamination",
+      "thread"
+    ],
+    "image_auroc_plain": 0.9895666131621188,
+    "image_auroc_eq7": 0.9891653290529695,
+    "pixel_auroc": 0.9878785443861174,
+    "published_image_auroc": null,
+    "published_pixel_auroc": null,
+    "source": null,
+    "paper_comparison": {
+      "coreset_pct": 0.1,
+      "bank_rows": 21952,
+      "image_auroc_plain": 0.989967897271268,
+      "pixel_auroc": 0.9883264568523737,
+      "published_image_auroc": 98.7,
+      "published_pixel_auroc": 99.1,
+      "gap_points": 0.297,
+      "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
+    }
+  },
+  {
+    "category": "grid",
+    "backbone": "wide_resnet50_2",
+    "coreset_pct": 0.02,
+    "bank_rows": 4140,
+    "bank_bytes_f16": 12718080,
+    "n_train": 264,
+    "n_test_good": 21,
+    "n_test_defect": 57,
+    "defect_types": [
+      "bent",
+      "broken",
+      "glue",
+      "metal_contamination",
+      "thread"
+    ],
+    "image_auroc_plain": 0.9757727652464494,
+    "image_auroc_eq7": 0.9757727652464494,
+    "pixel_auroc": 0.9749783087709161,
+    "published_image_auroc": null,
+    "published_pixel_auroc": null,
+    "source": null,
+    "paper_comparison": {
+      "coreset_pct": 0.1,
+      "bank_rows": 20698,
+      "image_auroc_plain": 0.9757727652464495,
+      "pixel_auroc": 0.976445931828209,
+      "published_image_auroc": 97.9,
+      "published_pixel_auroc": 98.7,
+      "gap_points": -0.323,
       "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
     }
   },
@@ -234,6 +331,68 @@
     }
   },
   {
+    "category": "tile",
+    "backbone": "wide_resnet50_2",
+    "coreset_pct": 0.02,
+    "bank_rows": 3606,
+    "bank_bytes_f16": 11077632,
+    "n_train": 230,
+    "n_test_good": 33,
+    "n_test_defect": 84,
+    "defect_types": [
+      "crack",
+      "glue_strip",
+      "gray_stroke",
+      "oil",
+      "rough"
+    ],
+    "image_auroc_plain": 0.9837662337662337,
+    "image_auroc_eq7": 0.9852092352092352,
+    "pixel_auroc": 0.9563053654216748,
+    "published_image_auroc": null,
+    "published_pixel_auroc": null,
+    "source": null,
+    "paper_comparison": {
+      "coreset_pct": 0.1,
+      "bank_rows": 18032,
+      "image_auroc_plain": 0.9884559884559885,
+      "pixel_auroc": 0.9543762512059368,
+      "published_image_auroc": 98.9,
+      "published_pixel_auroc": 95.9,
+      "gap_points": -0.054,
+      "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
+    }
+  },
+  {
+    "category": "toothbrush",
+    "backbone": "wide_resnet50_2",
+    "coreset_pct": 0.02,
+    "bank_rows": 941,
+    "bank_bytes_f16": 2890752,
+    "n_train": 60,
+    "n_test_good": 12,
+    "n_test_defect": 30,
+    "defect_types": [
+      "defective"
+    ],
+    "image_auroc_plain": 1.0,
+    "image_auroc_eq7": 1.0,
+    "pixel_auroc": 0.9862180876791289,
+    "published_image_auroc": null,
+    "published_pixel_auroc": null,
+    "source": null,
+    "paper_comparison": {
+      "coreset_pct": 0.1,
+      "bank_rows": 4704,
+      "image_auroc_plain": 0.9972222222222222,
+      "pixel_auroc": 0.9866462277141576,
+      "published_image_auroc": 99.7,
+      "published_pixel_auroc": 98.7,
+      "gap_points": 0.022,
+      "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
+    }
+  },
+  {
     "category": "transistor",
     "backbone": "wide_resnet50_2",
     "coreset_pct": 0.02,
@@ -262,6 +421,74 @@
       "published_image_auroc": 100.0,
       "published_pixel_auroc": 96.4,
       "gap_points": -0.167,
+      "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
+    }
+  },
+  {
+    "category": "wood",
+    "backbone": "wide_resnet50_2",
+    "coreset_pct": 0.02,
+    "bank_rows": 3873,
+    "bank_bytes_f16": 11897856,
+    "n_train": 247,
+    "n_test_good": 19,
+    "n_test_defect": 60,
+    "defect_types": [
+      "color",
+      "combined",
+      "hole",
+      "liquid",
+      "scratch"
+    ],
+    "image_auroc_plain": 0.9912280701754386,
+    "image_auroc_eq7": 0.9894736842105264,
+    "pixel_auroc": 0.9397216411312481,
+    "published_image_auroc": null,
+    "published_pixel_auroc": null,
+    "source": null,
+    "paper_comparison": {
+      "coreset_pct": 0.1,
+      "bank_rows": 19365,
+      "image_auroc_plain": 0.9912280701754386,
+      "pixel_auroc": 0.9383596680041203,
+      "published_image_auroc": 99.0,
+      "published_pixel_auroc": 95.1,
+      "gap_points": 0.123,
+      "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
+    }
+  },
+  {
+    "category": "zipper",
+    "backbone": "wide_resnet50_2",
+    "coreset_pct": 0.02,
+    "bank_rows": 3763,
+    "bank_bytes_f16": 11559936,
+    "n_train": 240,
+    "n_test_good": 32,
+    "n_test_defect": 119,
+    "defect_types": [
+      "broken_teeth",
+      "combined",
+      "fabric_border",
+      "fabric_interior",
+      "rough",
+      "split_teeth",
+      "squeezed_teeth"
+    ],
+    "image_auroc_plain": 0.9965861344537815,
+    "image_auroc_eq7": 0.9947478991596639,
+    "pixel_auroc": 0.9832010561001322,
+    "published_image_auroc": null,
+    "published_pixel_auroc": null,
+    "source": null,
+    "paper_comparison": {
+      "coreset_pct": 0.1,
+      "bank_rows": 18816,
+      "image_auroc_plain": 0.9942226890756303,
+      "pixel_auroc": 0.9826914170433624,
+      "published_image_auroc": 99.5,
+      "published_pixel_auroc": 98.9,
+      "gap_points": -0.078,
       "source": "Roth et al., Towards Total Recall in Industrial Anomaly Detection, CVPR 2022 supplementary, Table S1 (image AUROC) and Table S2 (pixel AUROC). WideResNet50 backbone, 224x224, PatchCore-10."
     }
   }

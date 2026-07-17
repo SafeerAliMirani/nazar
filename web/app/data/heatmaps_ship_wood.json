@@ -1,0 +1,62 @@
+[
+  {
+    "png": "heatmaps/ship_wood_00_combined_010_score_3.3263.png",
+    "defect_type": "combined",
+    "file": "010.png",
+    "src": "00_combined_010_score_3.3263.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_01_combined_007_score_3.2803.png",
+    "defect_type": "combined",
+    "file": "007.png",
+    "src": "01_combined_007_score_3.2803.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_02_hole_000_score_3.1553.png",
+    "defect_type": "hole",
+    "file": "000.png",
+    "src": "02_hole_000_score_3.1553.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_03_combined_006_score_3.1492.png",
+    "defect_type": "combined",
+    "file": "006.png",
+    "src": "03_combined_006_score_3.1492.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_04_combined_004_score_3.1353.png",
+    "defect_type": "combined",
+    "file": "004.png",
+    "src": "04_combined_004_score_3.1353.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_05_combined_001_score_3.1155.png",
+    "defect_type": "combined",
+    "file": "001.png",
+    "src": "05_combined_001_score_3.1155.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_06_liquid_001_score_3.0954.png",
+    "defect_type": "liquid",
+    "file": "001.png",
+    "src": "06_liquid_001_score_3.0954.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_07_liquid_008_score_3.0835.png",
+    "defect_type": "liquid",
+    "file": "008.png",
+    "src": "07_liquid_008_score_3.0835.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_08_good_016_score_2.1002.png",
+    "defect_type": "good",
+    "file": "016.png",
+    "src": "08_good_016_score_2.1002.png"
+  },
+  {
+    "png": "heatmaps/ship_wood_09_good_017_score_2.0422.png",
+    "defect_type": "good",
+    "file": "017.png",
+    "src": "09_good_017_score_2.0422.png"
+  }
+]

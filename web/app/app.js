@@ -15,9 +15,12 @@ const PER_PARTS = 10000;
 const NEAR_ROWS = 10;
 const WORST_ROWS = 8;
 const SERIES_COLORS = ['#4a8fc7', '#d1803b', '#4f9d69', '#9b7fc4'];
-// one per category, and there are eight of them
+// one per category, and there are fifteen of them. the compression chart draws
+// every category as its own line, so a palette shorter than the category count
+// wraps and two lines come out the same colour with nothing to tell them apart.
 const CAT_COLORS = ['#4a8fc7', '#d1803b', '#4f9d69', '#9b7fc4', '#c9a227', '#5fb3b3',
-  '#c1493f', '#8a94a6'];
+  '#c1493f', '#8a94a6', '#e28fb8', '#9fd356', '#6c63d9', '#7ec8e3', '#b5715a',
+  '#d98cd9', '#4d7a5a'];
 const PAD_C = { l: 46, r: 92, t: 14, b: 30 };
 
 const NUMERIC = new Set(['label', 'd_star', 'w', 'score_eq7']);

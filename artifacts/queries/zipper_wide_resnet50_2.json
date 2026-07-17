@@ -1,0 +1,220 @@
+{
+  "category": "zipper",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_zipper_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "zipper_combined_006",
+      "label": 1,
+      "defect_type": "combined",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.0521980853660065,
+        "w": 0.90530673932235,
+        "d_star": 3.3714518547058105,
+        "map_max": 3.2564697265625,
+        "map_min": 0.6262683272361755
+      }
+    },
+    {
+      "name": "zipper_fabric_border_001",
+      "label": 1,
+      "defect_type": "fabric_border",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.96826365745856,
+        "w": 0.9059466149131007,
+        "d_star": 3.2764222621917725,
+        "map_max": 3.036329984664917,
+        "map_min": 0.8074029684066772
+      }
+    },
+    {
+      "name": "zipper_fabric_border_005",
+      "label": 1,
+      "defect_type": "fabric_border",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.9121109384967916,
+        "w": 0.9050113588991245,
+        "d_star": 3.217761754989624,
+        "map_max": 3.063328266143799,
+        "map_min": 0.5805500745773315
+      }
+    },
+    {
+      "name": "zipper_fabric_border_009",
+      "label": 1,
+      "defect_type": "fabric_border",
+      "file": "009.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.6742190608658936,
+        "w": 0.9070087724268756,
+        "d_star": 2.9483938217163086,
+        "map_max": 2.8159713745117188,
+        "map_min": 0.7873936891555786
+      }
+    },
+    {
+      "name": "zipper_good_022",
+      "label": 0,
+      "defect_type": "good",
+      "file": "022.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.6316586916482796,
+        "w": 0.9202384528033379,
+        "d_star": 1.7730824947357178,
+        "map_max": 1.707457423210144,
+        "map_min": 0.6804640889167786
+      }
+    },
+    {
+      "name": "zipper_good_002",
+      "label": 0,
+      "defect_type": "good",
+      "file": "002.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.364007872137049,
+        "w": 0.9065188651410002,
+        "d_star": 1.504665732383728,
+        "map_max": 1.4105441570281982,
+        "map_min": 0.7520086169242859
+      }
+    },
+    {
+      "name": "zipper_fabric_interior_001",
+      "label": 1,
+      "defect_type": "fabric_interior",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.4063070914680889,
+        "w": 0.8992173967154815,
+        "d_star": 1.5639233589172363,
+        "map_max": 1.5146561861038208,
+        "map_min": 0.5908262729644775
+      }
+    },
+    {
+      "name": "zipper_broken_teeth_016",
+      "label": 1,
+      "defect_type": "broken_teeth",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.3608742437949501,
+        "w": 0.908372932121113,
+        "d_star": 1.4981448650360107,
+        "map_max": 1.4109305143356323,
+        "map_min": 0.6658656001091003
+      }
+    },
+    {
+      "name": "zipper_fabric_interior_007",
+      "label": 1,
+      "defect_type": "fabric_interior",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.255279530079244,
+        "w": 0.9044104287116957,
+        "d_star": 1.3879534006118774,
+        "map_max": 1.3390507698059082,
+        "map_min": 0.7181827425956726
+      }
+    },
+    {
+      "name": "zipper_good_020",
+      "label": 0,
+      "defect_type": "good",
+      "file": "020.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.0659134179320353,
+        "w": 0.9046921942136938,
+        "d_star": 1.1782056093215942,
+        "map_max": 1.1363929510116577,
+        "map_min": 0.5771721601486206
+      }
+    },
+    {
+      "name": "zipper_good_030",
+      "label": 0,
+      "defect_type": "good",
+      "file": "030.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.0562236789863177,
+        "w": 0.9045023571874452,
+        "d_star": 1.1677401065826416,
+        "map_max": 1.1273373365402222,
+        "map_min": 0.706553041934967
+      }
+    }
+  ]
+}

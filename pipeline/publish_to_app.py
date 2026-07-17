@@ -21,7 +21,8 @@ RUNS = HERE / "runs"
 APP = HERE.parent / "web" / "app" / "data"
 ART = HERE.parent / "artifacts"
 
-CATS = ["screw", "capsule", "pill", "cable", "metal_nut", "transistor", "leather", "hazelnut"]
+CATS = ["screw", "capsule", "pill", "cable", "metal_nut", "transistor", "leather", "hazelnut",
+        "bottle", "carpet", "grid", "tile", "toothbrush", "wood", "zipper"]
 PRIMARY = "screw"          # the informative one. leather saturates and proves nothing.
 WANT_BACKBONE = "wide_resnet50_2 IMAGENET1K_V1"
 WANT_CORESET = 0.02

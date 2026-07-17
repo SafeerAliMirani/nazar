@@ -2,6 +2,14 @@
   "note": "each set is a separate bank download. switching costs bandwidth.",
   "sets": [
     {
+      "tag": "bottle_wide_resnet50_2",
+      "category": "bottle",
+      "backbone": "wide_resnet50_2",
+      "index": "bottle_wide_resnet50_2.json",
+      "bank": "bank_bottle_wide_resnet50_2_c2",
+      "images": 11
+    },
+    {
       "tag": "cable_wide_resnet50_2",
       "category": "cable",
       "backbone": "wide_resnet50_2",
@@ -15,6 +23,22 @@
       "backbone": "wide_resnet50_2",
       "index": "capsule_wide_resnet50_2.json",
       "bank": "bank_capsule_wide_resnet50_2_c2",
+      "images": 11
+    },
+    {
+      "tag": "carpet_wide_resnet50_2",
+      "category": "carpet",
+      "backbone": "wide_resnet50_2",
+      "index": "carpet_wide_resnet50_2.json",
+      "bank": "bank_carpet_wide_resnet50_2_c2",
+      "images": 11
+    },
+    {
+      "tag": "grid_wide_resnet50_2",
+      "category": "grid",
+      "backbone": "wide_resnet50_2",
+      "index": "grid_wide_resnet50_2.json",
+      "bank": "bank_grid_wide_resnet50_2_c2",
       "images": 11
     },
     {
@@ -58,11 +82,43 @@
       "images": 11
     },
     {
+      "tag": "tile_wide_resnet50_2",
+      "category": "tile",
+      "backbone": "wide_resnet50_2",
+      "index": "tile_wide_resnet50_2.json",
+      "bank": "bank_tile_wide_resnet50_2_c2",
+      "images": 11
+    },
+    {
+      "tag": "toothbrush_wide_resnet50_2",
+      "category": "toothbrush",
+      "backbone": "wide_resnet50_2",
+      "index": "toothbrush_wide_resnet50_2.json",
+      "bank": "bank_toothbrush_wide_resnet50_2_c2",
+      "images": 11
+    },
+    {
       "tag": "transistor_wide_resnet50_2",
       "category": "transistor",
       "backbone": "wide_resnet50_2",
       "index": "transistor_wide_resnet50_2.json",
       "bank": "bank_transistor_wide_resnet50_2_c2",
+      "images": 11
+    },
+    {
+      "tag": "wood_wide_resnet50_2",
+      "category": "wood",
+      "backbone": "wide_resnet50_2",
+      "index": "wood_wide_resnet50_2.json",
+      "bank": "bank_wood_wide_resnet50_2_c2",
+      "images": 11
+    },
+    {
+      "tag": "zipper_wide_resnet50_2",
+      "category": "zipper",
+      "backbone": "wide_resnet50_2",
+      "index": "zipper_wide_resnet50_2.json",
+      "bank": "bank_zipper_wide_resnet50_2_c2",
       "images": 11
     }
   ]

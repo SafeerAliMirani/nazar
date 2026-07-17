@@ -1,13 +1,13 @@
 {
   "note": "Intro copy for people who do not read AUROC, kept as data so the page hand-types nothing. Second draft, matched to the Windfield and Orrery READMEs, and every number in it comes from the measured runs. Safeer reads it once and edits it before it ships.",
-  "headline": "Eight kinds of real parts, an inspector that has never seen a defect, scored on your GPU.",
+  "headline": "Fifteen kinds of real parts, an inspector that has never seen a defect, scored on your GPU.",
   "paragraphs": [
     "A factory makes thousands of parts a day, and a few of them come out wrong, and someone has to catch those few before they reach a customer. The obvious way to teach a computer the job is to show it plenty of faulty parts, and that is the one thing a real factory cannot supply. Good parts pile up by the thousand and bad ones stay rare, and the next fault to come down the line will be one nobody has photographed.",
     "Nazar learns the job the other way round. It studies photographs of good parts and nothing else, builds a memory of what normal looks like down to small patches of the surface, and scores a new part by asking whether any patch of it sits far from everything in that memory. A defect is exactly that, a patch unlike anything it remembers."
   ],
   "what_you_are_looking_at": [
     "Pick a part below, and the red patch is where Nazar found the surface least like its memory of good ones.",
-    "Real photographs, none of them from a factory. They are MVTec AD, a public benchmark used by inspection researchers: screws, capsules, pills, cables, metal nuts, transistors, leather, and hazelnuts, photographed on one bench under one fixed light.",
+    "Real photographs, none of them from a factory. They are MVTec AD, a public benchmark used by inspection researchers, and this page carries all fifteen kinds of part in it: screws, capsules, pills, cables, metal nuts, transistors, leather, hazelnuts, bottles, carpet, grid, tile, toothbrushes, wood, and zippers, photographed on one bench under one fixed light.",
     "The memory behind each kind of part was built from photographs of good parts only, 320 of them for the screw, and no defect ever went into it.",
     "The search that scores a part runs in this browser tab, on your own graphics card, and nothing is sent anywhere to be scored. Scoring one part means roughly 19.7 million comparisons against the memory and takes about 150 ms on a laptop. The heavy step, turning each photograph into the numbers the search compares, was done offline in advance, and only the search runs live here.",
     "Every part ships with the score the offline pipeline computed for it, and the page checks its own answer against that number live, on screen."

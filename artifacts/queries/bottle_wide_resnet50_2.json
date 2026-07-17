@@ -1,0 +1,220 @@
+{
+  "category": "bottle",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_bottle_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "bottle_contamination_013",
+      "label": 1,
+      "defect_type": "contamination",
+      "file": "013.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.7419537353275922,
+        "w": 0.906180355554226,
+        "d_star": 4.129369735717773,
+        "map_max": 4.087656497955322,
+        "map_min": 0.2674682140350342
+      }
+    },
+    {
+      "name": "bottle_contamination_007",
+      "label": 1,
+      "defect_type": "contamination",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.7388131478649034,
+        "w": 0.9133774475798824,
+        "d_star": 4.093393325805664,
+        "map_max": 4.036901950836182,
+        "map_min": 0.2273559868335724
+      }
+    },
+    {
+      "name": "bottle_broken_small_018",
+      "label": 1,
+      "defect_type": "broken_small",
+      "file": "018.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.5592125233763645,
+        "w": 0.9067042985946769,
+        "d_star": 3.9254391193389893,
+        "map_max": 3.7547435760498047,
+        "map_min": 0.3117128908634186
+      }
+    },
+    {
+      "name": "bottle_broken_small_017",
+      "label": 1,
+      "defect_type": "broken_small",
+      "file": "017.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.4253656433135875,
+        "w": 0.9185423581565297,
+        "d_star": 3.7291319370269775,
+        "map_max": 3.639578104019165,
+        "map_min": 0.26154112815856934
+      }
+    },
+    {
+      "name": "bottle_good_001",
+      "label": 0,
+      "defect_type": "good",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.5263999462742295,
+        "w": 0.9059275406672548,
+        "d_star": 1.6849029064178467,
+        "map_max": 1.630736231803894,
+        "map_min": 0.22145487368106842
+      }
+    },
+    {
+      "name": "bottle_good_019",
+      "label": 0,
+      "defect_type": "good",
+      "file": "019.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.4796420023907486,
+        "w": 0.9036197199502107,
+        "d_star": 1.6374609470367432,
+        "map_max": 1.5580657720565796,
+        "map_min": 0.2419394552707672
+      }
+    },
+    {
+      "name": "bottle_contamination_004",
+      "label": 1,
+      "defect_type": "contamination",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.0766102278007237,
+        "w": 0.9076001491044531,
+        "d_star": 2.2880232334136963,
+        "map_max": 2.225759744644165,
+        "map_min": 0.2275967001914978
+      }
+    },
+    {
+      "name": "bottle_contamination_019",
+      "label": 1,
+      "defect_type": "contamination",
+      "file": "019.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.0320006892787057,
+        "w": 0.905016739275228,
+        "d_star": 2.24526309967041,
+        "map_max": 2.0934441089630127,
+        "map_min": 0.22460171580314636
+      }
+    },
+    {
+      "name": "bottle_contamination_003",
+      "label": 1,
+      "defect_type": "contamination",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.8782624099569163,
+        "w": 0.9119386395835521,
+        "d_star": 2.0596368312835693,
+        "map_max": 1.9937925338745117,
+        "map_min": 0.17957143485546112
+      }
+    },
+    {
+      "name": "bottle_good_005",
+      "label": 0,
+      "defect_type": "good",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.2783197708468992,
+        "w": 0.9169091011008619,
+        "d_star": 1.3941619396209717,
+        "map_max": 1.3094456195831299,
+        "map_min": 0.24591904878616333
+      }
+    },
+    {
+      "name": "bottle_good_017",
+      "label": 0,
+      "defect_type": "good",
+      "file": "017.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.273742767982675,
+        "w": 0.9097076003568368,
+        "d_star": 1.4001672267913818,
+        "map_max": 1.3544633388519287,
+        "map_min": 0.2724585235118866
+      }
+    }
+  ]
+}

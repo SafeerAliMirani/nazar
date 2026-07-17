@@ -63,6 +63,55 @@
       "heatmaps": "heatmaps_ship_hazelnut.json"
     },
     {
+      "id": "ship_bottle",
+      "metrics": "metrics_ship_bottle.json",
+      "source": "pipeline/runs/ship_bottle",
+      "scores": "scores_ship_bottle.csv",
+      "heatmaps": "heatmaps_ship_bottle.json"
+    },
+    {
+      "id": "ship_carpet",
+      "metrics": "metrics_ship_carpet.json",
+      "source": "pipeline/runs/ship_carpet",
+      "scores": "scores_ship_carpet.csv",
+      "heatmaps": "heatmaps_ship_carpet.json"
+    },
+    {
+      "id": "ship_grid",
+      "metrics": "metrics_ship_grid.json",
+      "source": "pipeline/runs/ship_grid",
+      "scores": "scores_ship_grid.csv",
+      "heatmaps": "heatmaps_ship_grid.json"
+    },
+    {
+      "id": "ship_tile",
+      "metrics": "metrics_ship_tile.json",
+      "source": "pipeline/runs/ship_tile",
+      "scores": "scores_ship_tile.csv",
+      "heatmaps": "heatmaps_ship_tile.json"
+    },
+    {
+      "id": "ship_toothbrush",
+      "metrics": "metrics_ship_toothbrush.json",
+      "source": "pipeline/runs/ship_toothbrush",
+      "scores": "scores_ship_toothbrush.csv",
+      "heatmaps": "heatmaps_ship_toothbrush.json"
+    },
+    {
+      "id": "ship_wood",
+      "metrics": "metrics_ship_wood.json",
+      "source": "pipeline/runs/ship_wood",
+      "scores": "scores_ship_wood.csv",
+      "heatmaps": "heatmaps_ship_wood.json"
+    },
+    {
+      "id": "ship_zipper",
+      "metrics": "metrics_ship_zipper.json",
+      "source": "pipeline/runs/ship_zipper",
+      "scores": "scores_ship_zipper.csv",
+      "heatmaps": "heatmaps_ship_zipper.json"
+    },
+    {
       "id": "ship_leather_ablated",
       "metrics": "metrics_ship_leather_ablated.json",
       "source": "pipeline/runs/ship_leather_ablated",

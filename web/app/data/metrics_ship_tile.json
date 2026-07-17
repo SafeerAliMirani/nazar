@@ -1,0 +1,52 @@
+{
+  "category": "tile",
+  "seed": 0,
+  "coreset_pct": 0.02,
+  "image_auroc_plain": 0.9837662337662337,
+  "image_auroc_eq7": 0.9852092352092352,
+  "image_auroc": 0.9837662337662337,
+  "pixel_auroc": 0.9563053654216748,
+  "n_train": 230,
+  "n_test": 117,
+  "n_test_good": 33,
+  "n_test_defect": 84,
+  "test_counts": {
+    "crack": 17,
+    "glue_strip": 18,
+    "good": 33,
+    "gray_stroke": 16,
+    "oil": 18,
+    "rough": 15
+  },
+  "bank_size": 3606,
+  "w_p10": 0.9025634591151365,
+  "w_median": 0.9078547694550861,
+  "w_std": 0.00434024851768055,
+  "ablate_bank": "none",
+  "permute_labels": false,
+  "config": {
+    "data_root": "D:\\data\\mvtec_ad",
+    "device": "cuda",
+    "backbone": "wide_resnet50_2 IMAGENET1K_V1",
+    "balance_blocks": false,
+    "weights_sha256": "95faca4d11227dddf8633dbb5ff6c8a9003c1aa5b8945c73834b8007b10950b8",
+    "taps": [
+      "layer2",
+      "layer3"
+    ],
+    "resize": 256,
+    "crop": 224,
+    "patch_pool": "avg 3x3 stride 1 pad 1",
+    "grid": [
+      28,
+      28
+    ],
+    "feature_dim": 1536,
+    "projection_dim": 298,
+    "blur_sigma": 4.0,
+    "b_nearest": 9,
+    "batch": 16,
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  }
+}

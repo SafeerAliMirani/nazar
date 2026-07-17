@@ -978,7 +978,7 @@ async function boot() {
   wire();
 
   // the size is printed on every button already, so this line gives the range rather than
-  // listing eight of them again
+  // listing fifteen of them again
   const known = L.sets.map((s) => s.bytes).filter((b) => typeof b === 'number');
   const missing = L.sets.length - known.length;
   const fromServer = L.sets.every((s) => s.from === 'server');

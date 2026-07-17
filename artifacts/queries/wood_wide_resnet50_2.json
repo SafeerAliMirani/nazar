@@ -1,0 +1,220 @@
+{
+  "category": "wood",
+  "backbone": "wide_resnet50_2",
+  "bank": "bank_wood_wide_resnet50_2_c2",
+  "b_nearest": 9,
+  "crop": 224,
+  "blur_sigma": 4.0,
+  "note": "patch features are precomputed offline. the kNN, the eq.7 reweighting and the heatmap run in WGSL on your GPU.",
+  "images": [
+    {
+      "name": "wood_combined_010",
+      "label": 1,
+      "defect_type": "combined",
+      "file": "010.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.326340236758621,
+        "w": 0.9047726587191787,
+        "d_star": 3.6764376163482666,
+        "map_max": 3.6127052307128906,
+        "map_min": 1.2190806865692139
+      }
+    },
+    {
+      "name": "wood_combined_007",
+      "label": 1,
+      "defect_type": "combined",
+      "file": "007.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.280343324952328,
+        "w": 0.9161501789165112,
+        "d_star": 3.580573797225952,
+        "map_max": 3.493321657180786,
+        "map_min": 1.2386102676391602
+      }
+    },
+    {
+      "name": "wood_hole_000",
+      "label": 1,
+      "defect_type": "hole",
+      "file": "000.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.155326266414936,
+        "w": 0.9045344067490724,
+        "d_star": 3.4883430004119873,
+        "map_max": 3.37239146232605,
+        "map_min": 1.1764336824417114
+      }
+    },
+    {
+      "name": "wood_combined_006",
+      "label": 1,
+      "defect_type": "combined",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 3.1491707651783276,
+        "w": 0.9063557354039433,
+        "d_star": 3.474541664123535,
+        "map_max": 3.4123992919921875,
+        "map_min": 1.3454203605651855
+      }
+    },
+    {
+      "name": "wood_good_016",
+      "label": 0,
+      "defect_type": "good",
+      "file": "016.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.1002296560064773,
+        "w": 0.9135339734299063,
+        "d_star": 2.2990164756774902,
+        "map_max": 2.1930689811706543,
+        "map_min": 1.1560829877853394
+      }
+    },
+    {
+      "name": "wood_good_017",
+      "label": 0,
+      "defect_type": "good",
+      "file": "017.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.04223436411611,
+        "w": 0.9126078372708566,
+        "d_star": 2.2378005981445312,
+        "map_max": 2.1668286323547363,
+        "map_min": 1.0717718601226807
+      }
+    },
+    {
+      "name": "wood_scratch_006",
+      "label": 1,
+      "defect_type": "scratch",
+      "file": "006.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 2.0359680615272864,
+        "w": 0.9108114047010331,
+        "d_star": 2.2353343963623047,
+        "map_max": 2.1997768878936768,
+        "map_min": 1.2767689228057861
+      }
+    },
+    {
+      "name": "wood_hole_005",
+      "label": 1,
+      "defect_type": "hole",
+      "file": "005.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.9483086541703858,
+        "w": 0.9050598300502841,
+        "d_star": 2.1526849269866943,
+        "map_max": 2.1140987873077393,
+        "map_min": 1.1724672317504883
+      }
+    },
+    {
+      "name": "wood_scratch_001",
+      "label": 1,
+      "defect_type": "scratch",
+      "file": "001.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.8402870209184539,
+        "w": 0.9088747356363563,
+        "d_star": 2.024797201156616,
+        "map_max": 1.9859298467636108,
+        "map_min": 1.256014347076416
+      }
+    },
+    {
+      "name": "wood_good_004",
+      "label": 0,
+      "defect_type": "good",
+      "file": "004.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.462472330288226,
+        "w": 0.9049163191791132,
+        "d_star": 1.6161409616470337,
+        "map_max": 1.5714545249938965,
+        "map_min": 1.1334325075149536
+      }
+    },
+    {
+      "name": "wood_good_003",
+      "label": 0,
+      "defect_type": "good",
+      "file": "003.png",
+      "patches": 784,
+      "dims": 1536,
+      "grid": [
+        28,
+        28
+      ],
+      "reference": {
+        "score_eq7": 1.449558234534538,
+        "w": 0.9150218584152373,
+        "d_star": 1.5841788053512573,
+        "map_max": 1.5506153106689453,
+        "map_min": 1.0919525623321533
+      }
+    }
+  ]
+}
