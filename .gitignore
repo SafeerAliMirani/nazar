@@ -31,3 +31,8 @@ MIGRATION_HANDOVER.md
 
 # wrangler local state
 .wrangler/
+
+# throwaway logs from deploys and one-off drivers
+pipeline/_*.log
+pipeline/_*.py
+pipeline/_*.mjs
