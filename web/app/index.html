@@ -353,9 +353,74 @@
   <p class="src">Method: Roth et al., PatchCore. Data: Bergmann et al., MVTec AD.</p>
 </section>
 
+<!-- about and credits. the links are the same three the README carries, and every
+     credit here names a real source: the data, the method, the machine. -->
+<section class="panel" id="panel-about">
+  <div class="panel-head">
+    <h2>About</h2>
+    <div class="panel-controls"><span class="stat">Dr. Safeer Ali Mirani</span></div>
+  </div>
+
+  <p class="lede" data-copy="draft">
+    Nazar is a reimplementation of PatchCore that runs its nearest neighbour search in your browser,
+    in hand-written WebGPU, on your own graphics card. It was built to answer the two questions a
+    line actually asks before it buys an inspector: how many good parts must I collect first, and
+    where do I draw the line.
+  </p>
+
+  <div class="grid4">
+    <div class="card">
+      <h3>The data</h3>
+      <p>
+        MVTec AD, Bergmann et al., all fifteen categories, 5,354 photographs on one bench under one
+        fixed light. CC BY-NC-SA 4.0. The banks and heatmaps here are derived from those images and
+        inherit that licence. No data from any manufacturer was used anywhere in this project.
+      </p>
+    </div>
+    <div class="card">
+      <h3>The method</h3>
+      <p>
+        PatchCore, Roth et al., CVPR 2022. This page is a reimplementation, measured against the
+        paper's own Table S1 rather than against itself. The released code scores an image with a
+        plain max and never applies eq. 7, so both numbers are reported.
+      </p>
+    </div>
+    <div class="card">
+      <h3>The compute</h3>
+      <p>
+        Feature extraction, the coreset and the offline scoring ran on one NVIDIA RTX 2000 Ada
+        laptop GPU, torch 2.5.1 with CUDA 12.1. The kNN and the eq. 7 reweighting you see run live
+        run on your GPU, in WGSL, with no framework.
+      </p>
+    </div>
+    <div class="card">
+      <h3>The code</h3>
+      <p>
+        MIT, and the whole pipeline is one command per step. Every figure on this page is read out
+        of a file the pipeline wrote, and the page checks its own GPU answer against that file in
+        front of you.
+      </p>
+    </div>
+  </div>
+
+  <p class="about-links">
+    <a href="mailto:safeer.ali.mirani@gmail.com">safeer.ali.mirani@gmail.com</a>
+    <a href="https://www.linkedin.com/in/safeeralimirani">LinkedIn</a>
+    <a href="https://github.com/SafeerAliMirani/nazar">Repository</a>
+    <a href="https://safeeralimirani.pages.dev">Portfolio</a>
+  </p>
+</section>
+
 </main>
 
 <footer class="foot">
+  <p>
+    Built by <b>Dr. Safeer Ali Mirani</b>, GPU / XR / real-time visualisation engineer (PhD).
+    <a href="mailto:safeer.ali.mirani@gmail.com">safeer.ali.mirani@gmail.com</a> &middot;
+    <a href="https://safeeralimirani.pages.dev">Portfolio</a> &middot;
+    <a href="https://github.com/SafeerAliMirani/nazar">GitHub</a> &middot;
+    <a href="https://www.linkedin.com/in/safeeralimirani">LinkedIn</a>
+  </p>
   <p>
     Data: MVTec AD (Bergmann et al.), licensed CC BY-NC-SA 4.0. The heatmaps on this page are derived
     from MVTec AD images and inherit CC BY-NC-SA 4.0. The memory bank is derived from MVTec AD images

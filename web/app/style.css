@@ -395,3 +395,15 @@ button:hover { border-color: var(--ink-dim); color: var(--ink-hi); }
   color: var(--ink-dim);
 }
 .foot a { color: var(--ink); }
+.foot b { color: var(--ink-hi); font-weight: 600; }
+.foot p { margin: 0 0 10px; }
+
+.about-links { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 14px 0 0; }
+.about-links a {
+  padding: 5px 10px;
+  border: 1px solid var(--line2);
+  color: var(--ink);
+  text-decoration: none;
+  font: 11px/1.5 var(--mono);
+}
+.about-links a:hover { border-color: var(--ink-dim); color: var(--ink-hi); }

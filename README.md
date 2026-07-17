@@ -4,15 +4,16 @@
 
 **All fifteen kinds of real parts, an inspector that has never seen a defect, scored on your GPU.**
 
-[![Live demo](https://img.shields.io/badge/live-nazar.pages.dev-c0392b?style=for-the-badge)](https://nazar.pages.dev)
+[![Live demo](https://img.shields.io/badge/live-nazar.pages.dev-E8B34B?style=for-the-badge)](https://nazar.pages.dev)
 &nbsp;
 ![WebGPU](https://img.shields.io/badge/WebGPU-raw%20WGSL-1f6feb?style=for-the-badge)
+![Trained on](https://img.shields.io/badge/trained%20on-good%20parts%20only-db6d28?style=for-the-badge)
 ![Dependencies](https://img.shields.io/badge/dependencies-none-2ea043?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-8957e5?style=for-the-badge)
 
 </div>
 
-Nazar learns what a good part looks like from photographs of good parts and nothing else, then scores a new part by how far its worst patch sits from that memory. Pick a part in the browser and a hand-written WGSL compute shader runs the nearest neighbour search over the memory bank on your own graphics card, about 19.7 million distances in roughly 150 ms, and paints the heatmap where the surface is least like anything it has seen. Every part ships with the score the offline pipeline computed for it, and the page checks its own GPU answer against that number in front of you.
+Nazar learns what a good part looks like from photographs of good parts and nothing else, then scores a new part by how far its worst patch sits from that memory. Pick a part in the browser and a hand-written WGSL compute shader runs the nearest neighbour search over the memory bank on your own graphics card, 3.9 million distances for a screw in roughly 150 ms, and paints the heatmap where the surface is least like anything it has seen. Every part ships with the score the offline pipeline computed for it, and the page checks its own GPU answer against that number in front of you.
 
 ## What you are looking at
 
@@ -69,14 +70,22 @@ python pipeline/build_dist.py       # then serve dist/
 
 The kernel has its own parity harness at `web/harness`, which loads the goldens and prints the WGSL result against the float64 reference case by case, including the nearest neighbour pinned at the last bank row that a ceil-division bug would silently drop.
 
-## Notes
+## Honest notes
 
-The dataset is MVTec AD and it is CC BY-NC-SA 4.0. The banks and the heatmaps are derived from those images and carry the same licence, which is why they are not in this repository. The code is MIT. Download the archive from [mvtec.com](https://www.mvtec.com/company/research/datasets/mvtec-ad) rather than a mirror.
-
-The method is PatchCore, Roth et al., CVPR 2022. One thing worth knowing if you read the paper and then this code: the released implementation scores an image with a plain max over the patch distances and never applies eq.7, so the plain number is the one comparable to the published table, and both are reported here.
+- **Every number here was measured on a benchmark, not on a line.** MVTec AD is 5,354 photographs taken on one bench under one fixed light. A production line has none of that: the lighting drifts, the fixture moves, the part arrives at an angle nobody photographed. The only number that would mean anything on a line is one measured on that line.
+- **A perfect score can be worth nothing.** Leather scores 1.0000, and with its memory deliberately scrambled along every feature dimension it still scores 0.9487. An easy surface flatters any method. The screw is the one worth watching, and this page defaults to it for that reason.
+- **It is worse than a coin toss when the memory is small.** One good screw in the bank scores 0.482, five score 0.493. With a handful of references the search measures pose and rotation rather than defects. The few-shot curve is printed exactly as it came out, including that part.
+- **No threshold catches everything.** On the screw at the shipped setting, 45 of the 119 defective parts score below the worst good part, so no line separates them. The failure panel counts the misses by defect type instead of hiding them.
+- **The backbone does not run in your browser.** Patch features are precomputed offline. The kNN and the eq. 7 reweighting are what run live in WGSL, and the page says so where it matters.
+- **The few-shot curve covers leather and screw only.** It is a much larger sweep than one run per category, and the panel names the two rather than implying fifteen.
+- **The released PatchCore never applies eq. 7.** It scores an image with a plain max over the patch distances, so the plain number is the one comparable to the published table. Both are reported here.
 
 ## Author
 
-Dr Safeer Ali Mirani
+Built by **Dr. Safeer Ali Mirani**, GPU / XR / real-time visualisation engineer (PhD).
 
 [safeer.ali.mirani@gmail.com](mailto:safeer.ali.mirani@gmail.com) · [Portfolio](https://safeeralimirani.pages.dev) · [GitHub](https://github.com/SafeerAliMirani) · [LinkedIn](https://www.linkedin.com/in/safeeralimirani)
+
+## License
+
+MIT. Data is MVTec AD, Bergmann et al., licensed CC BY-NC-SA 4.0: the memory banks and heatmaps are derived from those images and inherit that licence, which is why they are not in this repository. Download the archive from [mvtec.com](https://www.mvtec.com/company/research/datasets/mvtec-ad) rather than a mirror. Method is PatchCore, Roth et al., CVPR 2022.

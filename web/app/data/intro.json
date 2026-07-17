@@ -9,7 +9,7 @@
     "Pick a part below, and the red patch is where Nazar found the surface least like its memory of good ones.",
     "Real photographs, none of them from a factory. They are MVTec AD, a public benchmark used by inspection researchers, and this page carries all fifteen kinds of part in it: screws, capsules, pills, cables, metal nuts, transistors, leather, hazelnuts, bottles, carpet, grid, tile, toothbrushes, wood, and zippers, photographed on one bench under one fixed light.",
     "The memory behind each kind of part was built from photographs of good parts only, 320 of them for the screw, and no defect ever went into it.",
-    "The search that scores a part runs in this browser tab, on your own graphics card, and nothing is sent anywhere to be scored. Scoring one part means roughly 19.7 million comparisons against the memory and takes about 150 ms on a laptop. The heavy step, turning each photograph into the numbers the search compares, was done offline in advance, and only the search runs live here.",
+    "The search that scores a part runs in this browser tab, on your own graphics card, and nothing is sent anywhere to be scored. Scoring one screw means 3.9 million comparisons against the memory and takes about 150 ms on a laptop, and the panel prints that count while it runs. The heavy step, turning each photograph into the numbers the search compares, was done offline in advance, and only the search runs live here.",
     "Every part ships with the score the offline pipeline computed for it, and the page checks its own answer against that number live, on screen."
   ],
   "the_two_questions": {
