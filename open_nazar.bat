@@ -1,4 +1,6 @@
 @echo off
-cd /d "C:\Users\Pirah\Claude\Projects\new project for cv\Nazar"
+rem Serve the repo root so the app can reach ../../artifacts, and open the page.
+rem Run dist\ instead if you want what actually deploys: python -m http.server 8201 --directory dist
+cd /d "%~dp0"
 start "" http://localhost:8200/web/app/
-"C:\Users\Pirah\anaconda3\python.exe" -m http.server 8200
+python -m http.server 8200
