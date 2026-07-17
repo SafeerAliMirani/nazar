@@ -1,42 +1,62 @@
 [
   {
-    "file": "ship_hazelnut_00_print_008_score_4.1153.png",
+    "png": "heatmaps/ship_hazelnut_00_print_008_score_4.1153.png",
+    "defect_type": "print",
+    "file": "008.png",
     "src": "00_print_008_score_4.1153.png"
   },
   {
-    "file": "ship_hazelnut_01_print_002_score_3.8446.png",
+    "png": "heatmaps/ship_hazelnut_01_print_002_score_3.8446.png",
+    "defect_type": "print",
+    "file": "002.png",
     "src": "01_print_002_score_3.8446.png"
   },
   {
-    "file": "ship_hazelnut_02_print_000_score_3.6361.png",
+    "png": "heatmaps/ship_hazelnut_02_print_000_score_3.6361.png",
+    "defect_type": "print",
+    "file": "000.png",
     "src": "02_print_000_score_3.6361.png"
   },
   {
-    "file": "ship_hazelnut_03_print_012_score_3.5813.png",
+    "png": "heatmaps/ship_hazelnut_03_print_012_score_3.5813.png",
+    "defect_type": "print",
+    "file": "012.png",
     "src": "03_print_012_score_3.5813.png"
   },
   {
-    "file": "ship_hazelnut_04_print_010_score_3.5666.png",
+    "png": "heatmaps/ship_hazelnut_04_print_010_score_3.5666.png",
+    "defect_type": "print",
+    "file": "010.png",
     "src": "04_print_010_score_3.5666.png"
   },
   {
-    "file": "ship_hazelnut_05_print_006_score_3.5348.png",
+    "png": "heatmaps/ship_hazelnut_05_print_006_score_3.5348.png",
+    "defect_type": "print",
+    "file": "006.png",
     "src": "05_print_006_score_3.5348.png"
   },
   {
-    "file": "ship_hazelnut_06_hole_003_score_3.5330.png",
+    "png": "heatmaps/ship_hazelnut_06_hole_003_score_3.5330.png",
+    "defect_type": "hole",
+    "file": "003.png",
     "src": "06_hole_003_score_3.5330.png"
   },
   {
-    "file": "ship_hazelnut_07_hole_007_score_3.4874.png",
+    "png": "heatmaps/ship_hazelnut_07_hole_007_score_3.4874.png",
+    "defect_type": "hole",
+    "file": "007.png",
     "src": "07_hole_007_score_3.4874.png"
   },
   {
-    "file": "ship_hazelnut_08_good_005_score_2.3410.png",
+    "png": "heatmaps/ship_hazelnut_08_good_005_score_2.3410.png",
+    "defect_type": "good",
+    "file": "005.png",
     "src": "08_good_005_score_2.3410.png"
   },
   {
-    "file": "ship_hazelnut_09_good_036_score_2.2667.png",
+    "png": "heatmaps/ship_hazelnut_09_good_036_score_2.2667.png",
+    "defect_type": "good",
+    "file": "036.png",
     "src": "09_good_036_score_2.2667.png"
   }
 ]

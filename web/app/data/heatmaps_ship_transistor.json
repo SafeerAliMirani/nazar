@@ -1,42 +1,62 @@
 [
   {
-    "file": "ship_transistor_00_misplaced_008_score_3.5369.png",
+    "png": "heatmaps/ship_transistor_00_misplaced_008_score_3.5369.png",
+    "defect_type": "misplaced",
+    "file": "008.png",
     "src": "00_misplaced_008_score_3.5369.png"
   },
   {
-    "file": "ship_transistor_01_misplaced_007_score_3.3065.png",
+    "png": "heatmaps/ship_transistor_01_misplaced_007_score_3.3065.png",
+    "defect_type": "misplaced",
+    "file": "007.png",
     "src": "01_misplaced_007_score_3.3065.png"
   },
   {
-    "file": "ship_transistor_02_misplaced_005_score_3.1715.png",
+    "png": "heatmaps/ship_transistor_02_misplaced_005_score_3.1715.png",
+    "defect_type": "misplaced",
+    "file": "005.png",
     "src": "02_misplaced_005_score_3.1715.png"
   },
   {
-    "file": "ship_transistor_03_damaged_case_009_score_2.8900.png",
+    "png": "heatmaps/ship_transistor_03_damaged_case_009_score_2.8900.png",
+    "defect_type": "damaged_case",
+    "file": "009.png",
     "src": "03_damaged_case_009_score_2.8900.png"
   },
   {
-    "file": "ship_transistor_04_misplaced_004_score_2.7826.png",
+    "png": "heatmaps/ship_transistor_04_misplaced_004_score_2.7826.png",
+    "defect_type": "misplaced",
+    "file": "004.png",
     "src": "04_misplaced_004_score_2.7826.png"
   },
   {
-    "file": "ship_transistor_05_damaged_case_008_score_2.7777.png",
+    "png": "heatmaps/ship_transistor_05_damaged_case_008_score_2.7777.png",
+    "defect_type": "damaged_case",
+    "file": "008.png",
     "src": "05_damaged_case_008_score_2.7777.png"
   },
   {
-    "file": "ship_transistor_06_bent_lead_007_score_2.6886.png",
+    "png": "heatmaps/ship_transistor_06_bent_lead_007_score_2.6886.png",
+    "defect_type": "bent_lead",
+    "file": "007.png",
     "src": "06_bent_lead_007_score_2.6886.png"
   },
   {
-    "file": "ship_transistor_07_damaged_case_001_score_2.6743.png",
+    "png": "heatmaps/ship_transistor_07_damaged_case_001_score_2.6743.png",
+    "defect_type": "damaged_case",
+    "file": "001.png",
     "src": "07_damaged_case_001_score_2.6743.png"
   },
   {
-    "file": "ship_transistor_08_good_045_score_2.0183.png",
+    "png": "heatmaps/ship_transistor_08_good_045_score_2.0183.png",
+    "defect_type": "good",
+    "file": "045.png",
     "src": "08_good_045_score_2.0183.png"
   },
   {
-    "file": "ship_transistor_09_good_044_score_1.9673.png",
+    "png": "heatmaps/ship_transistor_09_good_044_score_1.9673.png",
+    "defect_type": "good",
+    "file": "044.png",
     "src": "09_good_044_score_1.9673.png"
   }
 ]

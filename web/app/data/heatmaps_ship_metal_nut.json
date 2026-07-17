@@ -1,42 +1,62 @@
 [
   {
-    "file": "ship_metal_nut_00_flip_011_score_3.1799.png",
+    "png": "heatmaps/ship_metal_nut_00_flip_011_score_3.1799.png",
+    "defect_type": "flip",
+    "file": "011.png",
     "src": "00_flip_011_score_3.1799.png"
   },
   {
-    "file": "ship_metal_nut_01_flip_001_score_3.1399.png",
+    "png": "heatmaps/ship_metal_nut_01_flip_001_score_3.1399.png",
+    "defect_type": "flip",
+    "file": "001.png",
     "src": "01_flip_001_score_3.1399.png"
   },
   {
-    "file": "ship_metal_nut_02_flip_000_score_3.0609.png",
+    "png": "heatmaps/ship_metal_nut_02_flip_000_score_3.0609.png",
+    "defect_type": "flip",
+    "file": "000.png",
     "src": "02_flip_000_score_3.0609.png"
   },
   {
-    "file": "ship_metal_nut_03_flip_015_score_3.0234.png",
+    "png": "heatmaps/ship_metal_nut_03_flip_015_score_3.0234.png",
+    "defect_type": "flip",
+    "file": "015.png",
     "src": "03_flip_015_score_3.0234.png"
   },
   {
-    "file": "ship_metal_nut_04_color_014_score_3.0206.png",
+    "png": "heatmaps/ship_metal_nut_04_color_014_score_3.0206.png",
+    "defect_type": "color",
+    "file": "014.png",
     "src": "04_color_014_score_3.0206.png"
   },
   {
-    "file": "ship_metal_nut_05_flip_004_score_3.0126.png",
+    "png": "heatmaps/ship_metal_nut_05_flip_004_score_3.0126.png",
+    "defect_type": "flip",
+    "file": "004.png",
     "src": "05_flip_004_score_3.0126.png"
   },
   {
-    "file": "ship_metal_nut_06_flip_009_score_3.0061.png",
+    "png": "heatmaps/ship_metal_nut_06_flip_009_score_3.0061.png",
+    "defect_type": "flip",
+    "file": "009.png",
     "src": "06_flip_009_score_3.0061.png"
   },
   {
-    "file": "ship_metal_nut_07_flip_008_score_3.0007.png",
+    "png": "heatmaps/ship_metal_nut_07_flip_008_score_3.0007.png",
+    "defect_type": "flip",
+    "file": "008.png",
     "src": "07_flip_008_score_3.0007.png"
   },
   {
-    "file": "ship_metal_nut_08_good_005_score_2.1061.png",
+    "png": "heatmaps/ship_metal_nut_08_good_005_score_2.1061.png",
+    "defect_type": "good",
+    "file": "005.png",
     "src": "08_good_005_score_2.1061.png"
   },
   {
-    "file": "ship_metal_nut_09_good_016_score_2.0969.png",
+    "png": "heatmaps/ship_metal_nut_09_good_016_score_2.0969.png",
+    "defect_type": "good",
+    "file": "016.png",
     "src": "09_good_016_score_2.0969.png"
   }
 ]

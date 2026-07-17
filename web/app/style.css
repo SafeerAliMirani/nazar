@@ -239,3 +239,155 @@ button:hover { border-color: var(--ink-dim); color: var(--ink-hi); }
 .set-btns button { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.3; }
 .set-btns button b { font-weight: 600; }
 .set-btns button small { display: block; opacity: 0.62; font-size: 10px; }
+/* utility. without this every state of the live panel paints at once: the
+   loader, the deferred strip and the loaded body are all in the markup. */
+.hidden { display: none !important; }
+
+.error {
+  margin: 0;
+  padding: 8px 12px;
+  background: #2a1614;
+  border-bottom: 1px solid var(--alarm);
+  color: var(--ink-hi);
+  font: 12px/1.5 var(--mono);
+}
+
+/* the live panel is the one people came for, so it gets a little more room
+   than the instrument panels under it */
+.panel.hero { padding-bottom: 14px; }
+.hero .lede { margin-top: 0; }
+
+.live-pick { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* loading */
+.live-load { margin: 10px 0 4px; }
+.load-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font: 11px/1.4 var(--mono);
+  color: var(--ink-dim);
+  margin-bottom: 5px;
+}
+.load-track { height: 2px; background: var(--line); overflow: hidden; }
+.load-track i { display: block; height: 100%; width: 0; background: var(--good); transition: width 0.15s linear; }
+
+.live-defer { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin: 10px 0; }
+
+/* the picker strip. the img tags carry width=224 height=224, so with no rule
+   here every thumbnail rendered at full size and the strip filled the screen. */
+.live-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  scrollbar-width: thin;
+}
+.live-strip.busy { pointer-events: none; opacity: 0.5; }
+.thumb {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  cursor: pointer;
+  line-height: 0;
+}
+.thumb img { display: block; width: 74px; height: 74px; object-fit: cover; }
+.thumb span {
+  display: block;
+  max-width: 74px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 3px 4px;
+  font: 9px/1.3 var(--mono);
+  color: var(--ink-dim);
+}
+.thumb .bad { color: var(--defect); }
+.thumb .ok { color: var(--ink-dim); }
+.thumb.on { border-color: var(--ink-hi); }
+.thumb.on span { color: var(--ink-hi); }
+
+/* stage */
+.stage-wrap { position: relative; width: 100%; max-width: 520px; background: #000; border: 1px solid var(--line); }
+.stage-wrap canvas { display: block; width: 100%; height: auto; }
+.stage-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 3px 7px;
+  background: rgba(10, 13, 16, 0.82);
+  font: 10px/1.4 var(--mono);
+  color: var(--ink-hi);
+}
+/* the scan line only says the gpu is busy. it is decoration and nothing reads it. */
+.stage-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--good);
+  animation: scan 0.9s linear infinite;
+}
+@keyframes scan { from { top: 0; } to { top: 100%; } }
+
+.stage-ctl { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.seg-btns { display: flex; flex-wrap: wrap; gap: 4px; }
+.seg-btns button.on { border-color: var(--ink-dim); color: var(--ink-hi); background: var(--panel); }
+
+/* verdict pill */
+.pill {
+  padding: 2px 8px;
+  border: 1px solid var(--line2);
+  font: 10px/1.6 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  white-space: nowrap;
+}
+.pill.off { opacity: 0.6; }
+.pill.run { border-color: var(--good); color: var(--good); }
+.pill.ok { border-color: var(--ok); color: var(--ok); }
+.pill.bad { border-color: var(--alarm); color: var(--alarm); }
+
+/* the offline heatmap strip. these are wide panels, so they get a grid rather
+   than the flex row the picker uses. */
+/* each png is three 224 panels side by side, original, overlay and truth, so a
+   narrow column renders them at 70px each and nothing in them is readable. */
+.strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+.strip figure { margin: 0; }
+.strip img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #000; }
+.strip figcaption { margin-top: 4px; font: 10px/1.45 var(--mono); color: var(--ink-dim); }
+.strip figcaption b { color: var(--ink-hi); font-weight: 400; }
+
+/* empty states */
+.empty {
+  padding: 12px;
+  border: 1px dashed var(--line2);
+  font: 11px/1.5 var(--mono);
+  color: var(--ink-dim);
+}
+.empty-row td { text-align: left; color: var(--ink-dim); font-style: italic; }
+
+.warn-note { border-left: 2px solid var(--defect); padding-left: 10px; }
+
+.grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 10px; }
+.card { background: var(--panel); border: 1px solid var(--line); padding: 10px 12px; }
+.card h3 { margin: 0 0 6px; }
+.card p { margin: 0; font-size: 13px; color: var(--ink-dim); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11px; color: var(--ink-dim); }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 9px; height: 9px; display: inline-block; }
+
+.foot {
+  max-width: 74ch;
+  margin: 0 auto;
+  padding: 26px 14px 40px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+.foot a { color: var(--ink); }

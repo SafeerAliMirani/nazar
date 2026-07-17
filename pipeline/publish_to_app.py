@@ -12,6 +12,7 @@ banks are shape identical across backbones and no file announces which is which.
 """
 
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -24,6 +25,34 @@ CATS = ["screw", "capsule", "pill", "cable", "metal_nut", "transistor", "leather
 PRIMARY = "screw"          # the informative one. leather saturates and proves nothing.
 WANT_BACKBONE = "wide_resnet50_2 IMAGENET1K_V1"
 WANT_CORESET = 0.02
+
+
+def score_keys(csv_path):
+    # (defect_type, file), never file alone. MVTec reuses filenames across
+    # defect types and a key of file alone quietly returns another image's row.
+    keys = set()
+    if not csv_path.is_file():
+        return keys
+    lines = csv_path.read_text().strip().splitlines()
+    head = lines[0].split(",")
+    for line in lines[1:]:
+        if not line.strip():
+            continue
+        v = dict(zip(head, line.split(",")))
+        keys.add((v["defect_type"], v["file"]))
+    return keys
+
+
+def parse_panel(name):
+    # repro.py names these {rank:02d}_{dtype}_{stem}_score_{score:.4f}.png, and
+    # dtype itself contains underscores, so take the stem off the right hand end.
+    m = re.fullmatch(r"\d+_(.+)_score_-?[\d.]+\.png", name)
+    if not m:
+        return None
+    dtype, _, stem = m.group(1).rpartition("_")
+    if not dtype or not stem:
+        return None
+    return dtype, stem + ".png"
 
 
 def main():
@@ -57,11 +86,26 @@ def main():
 
         hm = src / "heatmaps"
         if hm.is_dir():
+            # the page reads png, defect_type and file off each entry. it used to
+            # get file and src, so it asked for data/undefined, captioned every
+            # image undefined, and missed every score row.
+            keys = score_keys(sc)
             index = []
             for p in sorted(hm.glob("*.png")):
                 dst = f"ship_{cat}_{p.name}"
                 shutil.copy2(p, APP / "heatmaps" / dst)
-                index.append({"file": dst, "src": p.name})
+                parsed = parse_panel(p.name)
+                if parsed is None:
+                    raise SystemExit(f"{cat}: cannot read a defect type out of {p.name}")
+                dtype, fname = parsed
+                # the caption number is joined on this key downstream and a miss
+                # there prints "no score row" rather than failing, so check here.
+                if keys and (dtype, fname) not in keys:
+                    raise SystemExit(
+                        f"{cat}: {p.name} parses to {dtype}/{fname}, which is not a "
+                        f"row in scores.csv. do not ship this index.")
+                index.append({"png": f"heatmaps/{dst}", "defect_type": dtype,
+                              "file": fname, "src": p.name})
             if index:
                 (APP / f"heatmaps_ship_{cat}.json").write_text(json.dumps(index, indent=2))
                 entry["heatmaps"] = f"heatmaps_ship_{cat}.json"
