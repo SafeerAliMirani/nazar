@@ -398,44 +398,6 @@ button:hover { border-color: var(--ink-dim); color: var(--ink-hi); }
 .foot b { color: var(--ink-hi); font-weight: 600; }
 .foot p { margin: 0 0 10px; }
 
-/* the tour. the spot is the hole and its box shadow is the dim, which is why the
-   shadow is absurdly large: it has to cover any page, at any scroll. */
-.tour-spot {
-  position: absolute;
-  z-index: 40;
-  border: 1px solid var(--ink-hi);
-  box-shadow: 0 0 0 9999px rgba(4, 6, 8, 0.8);
-  pointer-events: none;
-  transition: top 0.18s ease, left 0.18s ease, width 0.18s ease, height 0.18s ease;
-}
-.tour-card {
-  position: absolute;
-  z-index: 41;
-  width: 330px;
-  max-width: calc(100vw - 20px);
-  background: var(--panel);
-  border: 1px solid var(--line2);
-  padding: 12px 14px 12px;
-}
-.tour-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
-.tour-title { font: 600 13px/1.4 var(--sans); color: var(--ink-hi); }
-.tour-count { font: 10px/1.4 var(--mono); color: var(--ink-dim); white-space: nowrap; }
-.tour-body { margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: var(--ink); }
-.tour-btns { display: flex; justify-content: flex-end; gap: 8px; }
-.tour-next { border-color: var(--ink-dim); color: var(--ink-hi); }
-
-.tour-open {
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 39;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  border-radius: 50%;
-  background: var(--panel);
-  font: 400 15px/1 var(--mono);
-}
 
 .about-links { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 14px 0 0; }
 .about-links a {

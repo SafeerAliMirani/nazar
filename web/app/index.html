@@ -431,6 +431,58 @@
 
 <script src="app.js"></script>
 <script src="live.js"></script>
+<!-- tour: steps for this page, then the shared engine -->
+<script>
+window.TOUR_STEPS = [
+  {
+    sel: '.bar-stats',
+    title: 'What is loaded',
+    body: 'The whole configuration, in the open: which part, which backbone, how big the memory is, and how many good and defective parts are in the test set. It all changes when you switch category.',
+  },
+  {
+    sel: '#setBtns',
+    title: 'Pick a part',
+    body: 'Fifteen kinds of real part. Each is a separate memory bank and picking one downloads it, so the size is on the button. Every panel below follows what you pick here.',
+  },
+  {
+    sel: '#liveStrip',
+    title: 'The test parts',
+    body: 'Click any of them. The label under each says what it actually is: orange for a defect, grey for a good one. None of these were in the memory.',
+  },
+  {
+    sel: '.stage-wrap',
+    title: 'Where it looks wrong',
+    body: 'The red patch is where the surface sits furthest from anything in the memory of good parts. Nothing here was ever trained on a defect, so this is the method saying "I have not seen that before" rather than "that is a scratch".',
+  },
+  {
+    sel: '#liveReadouts',
+    title: 'Measured, not claimed',
+    body: 'The score, the worst patch of the 784, and how long the nearest neighbour search took on your own GPU. These are timed while you watch, on your machine.',
+  },
+  {
+    sel: '#tblParity',
+    title: 'The page checks itself',
+    body: 'Every part ships with the score the offline python pipeline computed for it. This table is the GPU answer against that number, live. If the kernel were wrong, this is where it would show.',
+  },
+  {
+    sel: '#panel-threshold',
+    title: 'The decision',
+    body: 'One accuracy number decides nothing. Drag the line and watch a missed defect trade against a stopped line. Choosing where it sits is the actual product.',
+  },
+  {
+    sel: '#panel-breaks',
+    title: 'Where it fails',
+    body: 'The defects that score below the worst good part, counted by type. No threshold catches them. This panel is here on purpose.',
+  },
+  {
+    sel: '#panel-published',
+    title: 'Against the paper',
+    body: 'The reproduction measured against PatchCore\'s own published table, all fifteen categories, gaps and all.',
+  },
+];
+window.TOUR_OPTIONS = { readySel: '#setBtns' };
+</script>
 <script src="tour.js"></script>
+<!-- /tour -->
 </body>
 </html>

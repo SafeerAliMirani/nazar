@@ -1,6 +1,19 @@
 // First run tour. Coach marks: one element lit at a time, everything else dimmed,
 // a card next to it saying what the thing is.
 //
+// Drop-in. One file, no dependencies, no CDN, no build step. It brings its own
+// CSS so it does not care what the host page's stylesheet looks like.
+//
+// The page declares its steps before loading this:
+//
+//   <script>window.TOUR_STEPS = [
+//     { sel: '#hud', title: 'What you are looking at', body: '...' },
+//   ];</script>
+//   <script src="tour.js"></script>
+//
+// A step whose element is missing or hidden is dropped, so a tour never points at
+// nothing and pages that build themselves late still work.
+//
 // No storage of any kind, so it opens once per page load and that is the whole
 // memory it has. Esc closes it, the ? button bottom right opens it again.
 //
@@ -11,80 +24,64 @@
 (function () {
 'use strict';
 
-// Every step names a real element. If one is missing or hidden the step is
-// dropped rather than pointing the spotlight at nothing.
-const STEPS = [
-  {
-    sel: '.bar-stats',
-    title: 'What is loaded',
-    body: 'The whole configuration, in the open: which part, which backbone, how big the memory is, and how many good and defective parts are in the test set. It all changes when you switch category.',
-  },
-  {
-    sel: '#setBtns',
-    title: 'Pick a part',
-    body: 'Fifteen kinds of real part. Each is a separate memory bank and picking one downloads it, so the size is on the button. Every panel below follows what you pick here.',
-  },
-  {
-    sel: '#liveStrip',
-    title: 'The test parts',
-    body: 'Click any of them. The label under each says what it actually is: orange for a defect, grey for a good one. None of these were in the memory.',
-  },
-  {
-    sel: '.stage-wrap',
-    title: 'Where it looks wrong',
-    body: 'The red patch is where the surface sits furthest from anything in the memory of good parts. Nothing here was ever trained on a defect, so this is the method saying "I have not seen that before" rather than "that is a scratch".',
-  },
-  {
-    sel: '#liveReadouts',
-    title: 'Measured, not claimed',
-    body: 'The score, the worst patch of the 784, and how long the nearest neighbour search took on your own GPU. These are timed while you watch, on your machine.',
-  },
-  {
-    sel: '#tblParity',
-    title: 'The page checks itself',
-    body: 'Every part ships with the score the offline python pipeline computed for it. This table is the GPU answer against that number, live. If the kernel were wrong, this is where it would show.',
-  },
-  {
-    sel: '#panel-threshold',
-    title: 'The decision',
-    body: 'One accuracy number decides nothing. Drag the line and watch a missed defect trade against a stopped line. Choosing where it sits is the actual product.',
-  },
-  {
-    sel: '#panel-breaks',
-    title: 'Where it fails',
-    body: 'The defects that score below the worst good part, counted by type. No threshold catches them. This panel is here on purpose.',
-  },
-  {
-    sel: '#panel-published',
-    title: 'Against the paper',
-    body: 'The reproduction measured against PatchCore\'s own published table, all fifteen categories, gaps and all.',
-  },
-];
+const STEPS = (window.TOUR_STEPS || []).slice();
+if (!STEPS.length) return;
 
-const PAD = 6;          // breathing room around the lit element
-const CARD_GAP = 12;    // between the hole and the card
+const OPTS = window.TOUR_OPTIONS || {};
+const PAD = OPTS.pad != null ? OPTS.pad : 6;   // breathing room around the lit element
+const CARD_GAP = 12;
+const TOP_INSET = OPTS.topInset != null ? OPTS.topInset : 110;  // room for a sticky header
+
+const CSS = `
+.tour-spot{position:absolute;z-index:2147483640;border:1px solid #eaf0f4;border-radius:3px;
+  box-shadow:0 0 0 9999px rgba(4,6,8,.8);pointer-events:none;
+  transition:top .18s ease,left .18s ease,width .18s ease,height .18s ease}
+.tour-card{position:absolute;z-index:2147483641;width:330px;max-width:calc(100vw - 20px);
+  background:#12161a;border:1px solid #2f3941;padding:12px 14px;color:#c3cbd2;
+  font:14px/1.5 system-ui,"Segoe UI",Roboto,sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.tour-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+.tour-title{font:600 13px/1.4 system-ui,"Segoe UI",Roboto,sans-serif;color:#eaf0f4}
+.tour-count{font:10px/1.4 ui-monospace,Consolas,monospace;color:#7d8992;white-space:nowrap}
+.tour-body{margin:0 0 12px;font-size:13px;line-height:1.6;color:#c3cbd2}
+.tour-btns{display:flex;justify-content:flex-end;gap:8px}
+.tour-card button{font:11px/1.6 ui-monospace,Consolas,monospace;padding:4px 10px;cursor:pointer;
+  background:#12161a;border:1px solid #2f3941;color:#c3cbd2}
+.tour-card button:hover{border-color:#7d8992;color:#eaf0f4}
+.tour-next{border-color:#7d8992 !important;color:#eaf0f4 !important}
+.tour-open{position:fixed;right:14px;bottom:14px;z-index:2147483639;width:34px;height:34px;padding:0;
+  border-radius:50%;background:#12161a;border:1px solid #2f3941;color:#c3cbd2;cursor:pointer;
+  font:400 15px/1 ui-monospace,Consolas,monospace}
+.tour-open:hover{border-color:#7d8992;color:#eaf0f4}
+@media (prefers-reduced-motion: reduce){.tour-spot{transition:none}}
+`;
 
 let steps = [];
 let at = 0;
 let open = false;
 let spot = null;
 let card = null;
-let opened = false;     // auto open is a once per load thing
+let opened = false;
 
-const $ = (s) => document.querySelector(s);
+const $ = (s) => { try { return document.querySelector(s); } catch (e) { return null; } };
 
 function visible(el) {
   if (!el) return false;
   const r = el.getBoundingClientRect();
-  return r.width > 1 && r.height > 1;
+  if (r.width < 2 || r.height < 2) return false;
+  return getComputedStyle(el).visibility !== 'hidden';
 }
 
 function build() {
+  const st = document.createElement('style');
+  st.textContent = CSS;
+  document.head.appendChild(st);
+
   spot = document.createElement('div');
   spot.className = 'tour-spot';
 
   card = document.createElement('div');
   card.className = 'tour-card';
+  card.setAttribute('role', 'dialog');
   card.innerHTML =
     '<div class="tour-head"><b class="tour-title"></b><span class="tour-count"></span></div>'
     + '<p class="tour-body"></p>'
@@ -92,7 +89,6 @@ function build() {
     + '<button type="button" class="tour-skip">Skip</button>'
     + '<button type="button" class="tour-next">Next</button>'
     + '</div>';
-
   card.querySelector('.tour-skip').addEventListener('click', close);
   card.querySelector('.tour-next').addEventListener('click', next);
 }
@@ -121,20 +117,18 @@ function place(fast) {
   card.querySelector('.tour-count').textContent = (at + 1) + ' / ' + steps.length;
   card.querySelector('.tour-next').textContent = at === steps.length - 1 ? 'Done' : 'Next';
 
-  // measure the card before deciding which side it goes on
   card.style.visibility = 'hidden';
   card.style.top = '0px';
   card.style.left = '0px';
   const cw = card.offsetWidth;
   const ch = card.offsetHeight;
 
-  // under the hole by default, above it when that would fall off the bottom
   let ct = top + h + CARD_GAP;
   if (ct + ch > window.scrollY + window.innerHeight - 8) {
     const above = top - ch - CARD_GAP;
-    if (above > window.scrollY + 8) ct = above;
+    ct = above > window.scrollY + 8 ? above : Math.max(window.scrollY + 8,
+      window.scrollY + window.innerHeight - ch - 8);
   }
-  // left aligned to the hole, pulled back when it would leave the viewport
   let cl = left;
   const maxL = window.scrollX + document.documentElement.clientWidth - cw - 8;
   if (cl > maxL) cl = maxL;
@@ -150,10 +144,8 @@ function show(i) {
   const el = $(steps[at].sel);
   if (el) {
     const r = el.getBoundingClientRect();
-    // only scroll when the target is not already comfortably on screen. the sticky
-    // header eats the top ~90px, so aim below it.
-    if (r.top < 90 || r.bottom > window.innerHeight - 40) {
-      window.scrollTo({ top: r.top + window.scrollY - 110, behavior: 'auto' });
+    if (r.top < TOP_INSET || r.bottom > window.innerHeight - 40) {
+      window.scrollTo({ top: Math.max(0, r.top + window.scrollY - TOP_INSET), behavior: 'auto' });
     }
   }
   place();
@@ -173,8 +165,8 @@ function start() {
   document.body.appendChild(card);
   document.addEventListener('keydown', onKey);
   window.addEventListener('resize', onMove);
-  // the header is sticky, so its page position changes as you scroll and the hole
-  // would be left behind. re-placing on scroll is a no-op for everything else.
+  // a sticky header moves as you scroll and the hole would be left behind.
+  // re-placing on scroll is a no-op for everything else.
   window.addEventListener('scroll', onMove, { passive: true });
   show(0);
 }
@@ -189,13 +181,12 @@ function close() {
   window.removeEventListener('scroll', onMove);
 }
 
-function onMove() {
-  place(true);
-}
+function onMove() { place(true); }
 
 function onKey(ev) {
   if (ev.key === 'Escape') close();
   else if (ev.key === 'ArrowRight' || ev.key === 'Enter') next();
+  else if (ev.key === 'ArrowLeft' && at > 0) show(at - 1);
 }
 
 function helpButton() {
@@ -209,15 +200,18 @@ function helpButton() {
   document.body.appendChild(b);
 }
 
-// the live panel fills in after its manifest and bank arrive, and the tour points
-// at things inside it, so wait for the switcher to exist before opening. give up
-// after a few seconds and open anyway: the panels below the live one are static.
+// These pages fetch data and build themselves. Waiting on the first step only was
+// not enough: a legend that fills in after the download, or a panel built from a
+// manifest, was still empty when the tour opened, so its step was dropped and the
+// counter read 1 / 2 instead of 1 / 6. Wait for every step to be real, and fall
+// back to whatever exists once the budget is spent.
 function whenReady(cb) {
   const t0 = Date.now();
+  const budget = OPTS.readyTimeout || 12000;
   (function poll() {
-    const ready = visible($('#setBtns')) && visible($('#liveStrip'));
-    if (ready || Date.now() - t0 > 6000) return cb();
-    setTimeout(poll, 200);
+    const all = STEPS.every((s) => visible($(s.sel)));
+    if (all || Date.now() - t0 > budget) return cb();
+    setTimeout(poll, 250);
   })();
 }
 
