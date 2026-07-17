@@ -4,7 +4,7 @@
 
 **All fifteen kinds of real parts, an inspector that has never seen a defect, scored on your GPU.**
 
-[![Live demo](https://img.shields.io/badge/live-nazar.pages.dev-E8B34B?style=for-the-badge)](https://nazar.pages.dev)
+[![Live demo](https://img.shields.io/badge/live-nazar--60r.pages.dev-E8B34B?style=for-the-badge)](https://nazar-60r.pages.dev)
 &nbsp;
 ![WebGPU](https://img.shields.io/badge/WebGPU-raw%20WGSL-1f6feb?style=for-the-badge)
 ![Trained on](https://img.shields.io/badge/trained%20on-good%20parts%20only-db6d28?style=for-the-badge)
