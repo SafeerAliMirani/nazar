@@ -28,3 +28,6 @@ __pycache__/
 PROJECT_BRIEF.md
 REVIEW_V2.md
 MIGRATION_HANDOVER.md
+
+# wrangler local state
+.wrangler/
