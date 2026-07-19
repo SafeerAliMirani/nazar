@@ -78,9 +78,18 @@ def main():
 
     html = (DIST / "index.html").read_text(encoding="utf-8")
     if "safeer-analytics" not in html:
-        html = html.replace("</body>", ANALYTICS + "</body>", 1)
+        # The snippet defines window.track, and live.js calls trackOnce for the
+        # webgpu_unsupported event at startup. app.js and live.js are classic
+        # scripts, so they run at parse time in document order: the snippet must
+        # come BEFORE them or window.track does not exist yet and the event is
+        # lost. Inject before the first app script, not before </body>.
+        anchor = '<script src="app.js"></script>'
+        if anchor in html:
+            html = html.replace(anchor, ANALYTICS + anchor, 1)
+        else:
+            html = html.replace("</body>", ANALYTICS + "</body>", 1)
         (DIST / "index.html").write_text(html, encoding="utf-8", newline="")
-        print("index.html: analytics snippet added")
+        print("index.html: analytics snippet added before the app scripts")
 
     # no source, no datasets, nothing stale. markdown that documents a data file
     # is fine and worth publishing, so it is allowed under data/.

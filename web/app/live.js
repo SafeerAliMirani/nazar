@@ -166,10 +166,19 @@ function fallback(msg) {
 
 // ---- gpu --------------------------------------------------------------------
 
+// fire an analytics label at most once, only if the snippet's window.track exists.
+const _fired = new Set();
+function trackOnce(type, label) {
+  const k = type + '/' + label;
+  if (_fired.has(k)) return;
+  _fired.add(k);
+  if (window.track) window.track(type, label);
+}
+
 async function initGPU(N, D, Q) {
-  if (!navigator.gpu) throw new Error('This browser has no WebGPU, so the kernel cannot run here.');
+  if (!navigator.gpu) { trackOnce('webgpu_unsupported', 'no-webgpu'); throw new Error('This browser has no WebGPU, so the kernel cannot run here.'); }
   const adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
-  if (!adapter) throw new Error('WebGPU is present but no GPU adapter was handed out.');
+  if (!adapter) { trackOnce('webgpu_unsupported', 'no-adapter'); throw new Error('WebGPU is present but no GPU adapter was handed out.'); }
 
   const bankBytes = N * D * 4;   // the kernel binds array<f32>, so f16 is expanded on upload
   if (adapter.limits.maxStorageBufferBindingSize < bankBytes) {
@@ -472,6 +481,7 @@ function markThumb(i) {
 async function pick(i) {
   if (L.busy) return;   // the strip stops taking clicks while this runs, see .busy below
   L.busy = true;
+  trackOnce('demo_interaction', 'scored-a-part');   // someone actually ran the kernel
   $('liveStrip').classList.add('busy');
   markThumb(i);
   const meta = L.meta.images[i];
