@@ -22,8 +22,11 @@ APP = ROOT / "web" / "app"
 ART = ROOT / "artifacts"
 DIST = ROOT / "dist"
 
+# No defer: this is a classic inline script and must run at parse, before app.js
+# and live.js, so window.track exists when live.js fires webgpu_unsupported at
+# startup. defer is ignored on inline scripts anyway.
 ANALYTICS = (
-    '<script defer>\n'
+    '<script>\n'
     '(function(){\n'
     "  var E='https://safeer-analytics.safeer-ali-mirani.workers.dev/collect';\n"
     "  function send(t,l){try{var b=JSON.stringify({type:t,label:l||null,path:location.pathname,referrer:document.referrer||null});\n"
@@ -37,6 +40,7 @@ ANALYTICS = (
     "    if(h.indexOf('mailto:')===0)return send('contact_click','email');\n"
     "    if(/github\\.com|linkedin\\.com|orcid\\.org|scholar\\.google/.test(h))return send('source_click',(h.match(/https?:\\/\\/([^\\/]+)/)||[])[1]||'link');\n"
     "  },true);\n"
+    "  window.track = send;\n"
     '})();\n'
     '</script>\n'
 )
