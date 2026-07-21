@@ -134,8 +134,12 @@ main { padding: 12px; display: flex; flex-direction: column; gap: 12px; max-widt
   text-transform: uppercase;
   color: var(--ink-hi);
 }
-.panel-controls { display: flex; align-items: center; gap: 12px; }
-.stat { font: 12px/1 var(--mono); color: var(--ink-dim); }
+/* These rows hold a select plus a readout. Without wrap they stayed on one line
+   on a phone and pushed the whole document sideways: measured 485px of content
+   in a 390px viewport. Wrapping is the fix, and min-width 0 lets the children
+   actually shrink rather than hold their content width. */
+.panel-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; min-width: 0; }
+.stat { font: 12px/1 var(--mono); color: var(--ink-dim); min-width: 0; overflow-wrap: anywhere; }
 
 h3 {
   margin: 12px 0 6px;
@@ -360,7 +364,10 @@ button:hover { border-color: var(--ink-dim); color: var(--ink-hi); }
    than the flex row the picker uses. */
 /* each png is three 224 panels side by side, original, overlay and truth, so a
    narrow column renders them at 70px each and nothing in them is readable. */
-.strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+/* min(340px, 100%) not 340px: a hard 340 minimum plus the panel padding came to
+   368px and would not fit a 360px phone, so the grid pushed the page sideways.
+   min() lets a single column shrink below the ideal width instead. */
+.strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 12px; }
 .strip figure { margin: 0; }
 .strip img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #000; }
 .strip figcaption { margin-top: 4px; font: 10px/1.45 var(--mono); color: var(--ink-dim); }

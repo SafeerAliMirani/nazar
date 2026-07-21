@@ -25,7 +25,8 @@ from scipy.ndimage import gaussian_filter
 from sklearn.metrics import roc_auc_score
 from sklearn.random_projection import SparseRandomProjection
 from torchvision import transforms
-from torchvision.models import (ResNet50_Weights, Wide_ResNet50_2_Weights,
+from torchvision.models import (MobileNet_V3_Large_Weights, ResNet50_Weights,
+                                Wide_ResNet50_2_Weights, mobilenet_v3_large,
                                 resnet50, wide_resnet50_2)
 
 try:
@@ -125,7 +126,27 @@ def list_dataset(root, category):
 BACKBONES = {
     "wide_resnet50_2": (wide_resnet50_2, Wide_ResNet50_2_Weights.IMAGENET1K_V1),
     "resnet50": (resnet50, ResNet50_Weights.IMAGENET1K_V1),
+    # a backbone small enough to run in a phone browser. it taps the same two
+    # strides as the resnets, so the patch grid is identical and only the width
+    # changes: 40+112 channels against 512+1024.
+    "mobilenet_v3_large": (mobilenet_v3_large, MobileNet_V3_Large_Weights.IMAGENET1K_V1),
 }
+
+# which modules carry the stride 8 and stride 16 taps. the resnets name them;
+# mobilenet has no .layer2, only a flat features list, and at 224 input
+# features[6] is 28x28 and features[12] is 14x14, the same two grids.
+TAPS = {
+    "wide_resnet50_2": ("layer2", "layer3"),
+    "resnet50": ("layer2", "layer3"),
+    "mobilenet_v3_large": ("features.6", "features.12"),
+}
+
+
+def _module(model, path):
+    m = model
+    for part in path.split("."):
+        m = m[int(part)] if part.isdigit() else getattr(m, part)
+    return m
 
 
 def weights_sha256(name):
@@ -151,16 +172,21 @@ def weights_sha256(name):
 
 
 def build_extractor(device, name="wide_resnet50_2"):
-    # both nets expose 512 ch at layer2 and 1024 at layer3, so the patch
+    # the resnets expose 512 ch at layer2 and 1024 at layer3, so their patch
     # geometry is the same. wide_resnet50_2 is the published PatchCore config.
+    # mobilenet taps a different pair of modules for the same two strides, which
+    # keeps the 28x28 grid and every downstream step identical.
     ctor, weights = BACKBONES[name]
     model = ctor(weights=weights)
     model.eval().to(device)
     for p in model.parameters():
         p.requires_grad_(False)
     taps = {}
-    model.layer2.register_forward_hook(lambda m, i, o: taps.__setitem__("layer2", o))
-    model.layer3.register_forward_hook(lambda m, i, o: taps.__setitem__("layer3", o))
+    lo, hi = TAPS[name]
+    _module(model, lo).register_forward_hook(
+        lambda m, i, o: taps.__setitem__("layer2", o))
+    _module(model, hi).register_forward_hook(
+        lambda m, i, o: taps.__setitem__("layer3", o))
     return model, taps
 
 
