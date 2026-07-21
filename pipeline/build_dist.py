@@ -30,8 +30,8 @@ ANALYTICS = (
     '(function(){\n'
     "  var E='https://safeer-analytics.safeer-ali-mirani.workers.dev/collect';\n"
     "  function send(t,l){try{var b=JSON.stringify({type:t,label:l||null,path:location.pathname,referrer:document.referrer||null});\n"
-    "    if(navigator.sendBeacon)navigator.sendBeacon(E,new Blob([b],{type:'application/json'}));\n"
-    "    else fetch(E,{method:'POST',body:b,headers:{'Content-Type':'application/json'},keepalive:true});}catch(_){ }}\n"
+    "    if(navigator.sendBeacon)navigator.sendBeacon(E,new Blob([b],{type:'text/plain;charset=UTF-8'}));\n"
+    "    else fetch(E,{method:'POST',body:b,headers:{'Content-Type':'text/plain;charset=UTF-8'},keepalive:true});}catch(_){ }}\n"
     "  send('pageview');\n"
     "  document.addEventListener('click',function(e){\n"
     "    var a=e.target.closest?e.target.closest('a'):null; if(!a)return;\n"
@@ -113,7 +113,9 @@ def main():
     if over:
         raise SystemExit(f"over the Cloudflare Pages 25 MiB per file cap: {[p.name for p in over]}")
     print("\nevery file is under the 25 MiB Pages cap. deploy dist and nothing else:")
-    print('  wrangler pages deploy dist --project-name=nazar --branch=production')
+    # nazar's production branch is main, not production. deploying to the wrong
+    # one makes a preview and the live site silently does not change.
+    print('  wrangler pages deploy dist --project-name=nazar --branch=main')
 
 
 if __name__ == "__main__":
