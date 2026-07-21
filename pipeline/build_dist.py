@@ -52,7 +52,7 @@ def main():
     (DIST / "artifacts" / "queries").mkdir(parents=True)
     (DIST / "kernels").mkdir(parents=True)
 
-    for f in ["index.html", "app.js", "live.js", "tour.js", "style.css"]:
+    for f in ["index.html", "app.js", "live.js", "tour.js", "panel-toggle.js", "style.css"]:
         shutil.copy2(APP / f, DIST / f)
     shutil.copytree(APP / "data", DIST / "data")
 
